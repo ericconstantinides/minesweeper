@@ -1,0 +1,9 @@
+.Board {
+  @include drop-section;
+}
+.Board__inner {
+  margin: -1px;
+}
+.Board__row {
+  display: flex;
+}

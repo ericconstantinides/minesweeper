@@ -1,0 +1,18 @@
+#root {
+  display: flex;
+}
+.App {
+  display: flex;
+  flex-flow: column;
+  margin: 0 auto;
+  background: #bdbdbd;
+  padding: 1em;
+}
+.App__header {
+  display: flex;
+  @include drop-section;
+  margin-bottom: 10px;
+  > * {
+    flex: 0 0 33.33%;
+  }
+}

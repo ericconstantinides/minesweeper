@@ -1,0 +1,124 @@
+.ResetButton__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25em 0;
+}
+.ResetButton {
+  height: 53px;
+  width: 53px;
+  padding: 6px;
+  @include button;
+}
+.ResetButton__inner {
+  border-radius: 50%;
+  background: #fffc38;
+  border: 2px solid black;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.ResetButton__left-eye,
+.ResetButton__right-eye {
+  position: absolute;
+  top: 10px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: black;
+}
+.ResetButton__left-eye {
+  left: 7px;
+}
+.ResetButton__right-eye {
+  right: 7px;
+}
+.ResetButton__mouth {
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  margin-left: -6px;
+  display: block;
+  width: 12px;
+  height: 5px;
+  border-radius: 0 0 8px 8px;
+  border-bottom: 2px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+}
+/*
+ * O-face:
+ */
+.ResetButton--o-face {
+  .ResetButton__mouth {
+    border: 2px solid black;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    margin-left: -4px;
+  }
+  .ResetButton__left-eye,
+  .ResetButton__right-eye {
+    transform: scale(1.5);
+  }
+}
+/*
+ * Dead-face:
+ */
+.ResetButton--dead-face {
+  .ResetButton__mouth {
+    transform: rotate(180deg);
+  }
+  .ResetButton__left-eye { left: 9px; }
+  .ResetButton__right-eye { right: 9px; }
+  .ResetButton__left-eye,
+  .ResetButton__right-eye {
+    width: 0;
+    height: 0;
+    background: none;
+    &:before,
+    &:after {
+      content: '';
+      display: block;
+      background: black;
+      transform: rotate(45deg);
+      position: absolute;
+    }
+    &:before {
+      width: 1px;
+      height: 9px;
+      margin-top: -4px;
+    }
+    &:after {
+      width: 9px;
+      height: 1px;
+      margin-left: -4px;
+    }
+  }
+}
+/*
+ * Sunglasses-face
+ */
+.ResetButton--sunglasses-face {
+  .ResetButton__left-eye,
+  .ResetButton__right-eye {
+    width: 7px;
+    height: 7px;
+  }
+  .ResetButton__left-eye:after,
+  .ResetButton__right-eye:after {
+    content: '';
+    display: block;
+    width: 8px;
+    height: 1px;
+    background: black;
+  }
+  .ResetButton__left-eye:after {
+    transform: rotate(-15deg);
+    margin: 4px 0 0 -8px;
+  }
+  .ResetButton__right-eye:after {
+    transform: rotate(15deg);
+    margin: 4px 0 0 6px;
+  }
+}
