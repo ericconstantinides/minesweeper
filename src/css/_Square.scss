@@ -12,20 +12,13 @@
   }
 }
 .Square__inner {
+  width: 20px;
+  height: 20px;
+  background-size: contain;
   .Square.is-mine & {
-    width: 20px;
-    height: 20px;
-    background: black;
-    border-radius: 50%;
-    &:after {
-      content: '';
-      display: block;
-      width: 5px;
-      height: 5px;
-      background: #ffffff;
-      border-radius: 50%;
-      margin: 5px 0 0 5px;
-      box-shadow: 0 0 2px #ffffff;
-    }
+    background-image: url(/images/icon-bomb.png);
+  }
+  .Square.is-flag & {
+    background-image: url(/images/icon-triangular-flag-on-post.png);
   }
 }
