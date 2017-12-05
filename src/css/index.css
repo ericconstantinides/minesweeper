@@ -168,3 +168,22 @@ html [type=button] {
     background-image: url(/images/icon-bomb.png); }
   .Square.is-flag .Square__inner {
     background-image: url(/images/icon-triangular-flag-on-post.png); }
+
+.Square__helper {
+  font-family: 'Baloo Paaji', cursive;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75em; }
+  .Square__helper.has-1 {
+    color: #0700f9; }
+  .Square__helper.has-2 {
+    color: #007b17; }
+  .Square__helper.has-3 {
+    color: #ff041d; }
+  .Square__helper.has-4 {
+    color: #010077; }
+  .Square__helper.has-5 {
+    color: #800108; }

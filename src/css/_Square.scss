@@ -22,3 +22,18 @@
     background-image: url(/images/icon-triangular-flag-on-post.png);
   }
 }
+
+.Square__helper {
+  @include game-font;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75em;
+  &.has-1 { color: #0700f9; }
+  &.has-2 { color: #007b17; }
+  &.has-3 { color: #ff041d; }
+  &.has-4 { color: #010077; }
+  &.has-5 { color: #800108; }
+}

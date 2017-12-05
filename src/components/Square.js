@@ -7,7 +7,12 @@ const Square = props => {
   const flagClass = props.flag ? 'is-flag' : 'not-flag'
   return (
     <div className={`Square ${mineClass} ${sweptClass} ${flagClass}`}>
-      <div className='Square__inner' />
+      <div className='Square__inner'>
+        {props.minesNearby > 0 &&
+          <span className={`Square__helper has-${props.minesNearby}`}>
+            {props.minesNearby}
+          </span>}
+      </div>
     </div>
   )
 }

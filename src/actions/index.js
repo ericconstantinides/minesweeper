@@ -54,7 +54,6 @@ function addBoardHelpers (board) {
   // cycle through every piece on the board:
   for (let x = 0; x < board.length; x++) {
     for (let y = 0; y < board[x].length; y++) {
-      console.log(x, y, board[x][y].isMine)
       // now find the nearby mines
       board[x][y].minesNearby = findNearbyMines(board, {x, y})
     }
