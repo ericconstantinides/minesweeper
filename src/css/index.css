@@ -69,7 +69,8 @@ html [type=button] {
   border-left: 4px solid #7b7b7b;
   border-right: 4px solid #ffffff;
   border-bottom: 4px solid #ffffff;
-  margin-bottom: 10px; }
+  margin-bottom: 10px;
+  padding: 0.25em 0.5em; }
   .App__header > * {
     flex: 0 0 auto; }
   .App__header > *:first-child,
@@ -96,8 +97,8 @@ html [type=button] {
   padding: 0.25em 0; }
 
 .ResetButton {
-  height: 54px;
-  width: 54px;
+  height: 44px;
+  width: 44px;
   padding: 0;
   background: #bdbdbd;
   border-top: 4px solid #ffffff;
@@ -112,19 +113,14 @@ html [type=button] {
     border-left: 4px solid #7b7b7b;
     border-right: 4px solid #ffffff;
     border-bottom: 4px solid #ffffff; }
-  .ResetButton:active, .ResetButton.is-pressed {
-    background: #bdbdbd;
-    border-top: 4px solid #7b7b7b;
-    border-left: 4px solid #7b7b7b;
-    border-right: 4px solid #ffffff;
-    border-bottom: 4px solid #ffffff; }
-    .ResetButton:active .ResetButton__inner, .ResetButton.is-pressed .ResetButton__inner {
-      background-size: 36px 36px; }
+  .ResetButton:active .ResetButton__inner {
+    background-size: 28px 28px;
+    background-image: url(/images/icon-face-with-open-mouth.png); }
 
 .ResetButton__inner {
   width: 100%;
   height: 100%;
-  background-size: 40px 40px;
+  background-size: 32px 32px;
   background-position: center center;
   background-image: url(/images/icon-slightly-smiling-face.png); }
   .ResetButton--sunglasses-face .ResetButton__inner {
@@ -137,8 +133,11 @@ html [type=button] {
 .timer {
   display: flex;
   justify-content: center;
-  flex-direction: column;
-  align-items: center; }
+  flex-direction: column; }
+  .timer:first-child {
+    align-items: flex-start; }
+  .timer:last-child {
+    align-items: flex-end; }
 
 .timer__inner {
   font-family: 'led16sgmnt';

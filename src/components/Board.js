@@ -5,7 +5,7 @@ import Square from './Square'
 
 class Board extends Component {
   componentDidMount () {
-    this.props.createGame(20, 10, 10)
+    this.props.createGame(10, 20, 10)
   }
   handleSquareClick = coords => event => {
     const {x, y} = coords
