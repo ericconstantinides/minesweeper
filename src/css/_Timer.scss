@@ -1,4 +1,13 @@
-.Timer {
+.timer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.timer__inner {
   @include led-font;
   background: black;
+  line-height: 1;
+  padding: 0.2em 0.175em 0;
+  font-size: 2.2em;
 }

@@ -48,6 +48,10 @@ button,
 html [type=button] {
   -webkit-appearance: button; }
 
+@font-face {
+  font-family: 'led16sgmnt';
+  src: url("/fonts/led16sgmnt-Regular.ttf"); }
+
 #root {
   display: flex; }
 
@@ -67,7 +71,10 @@ html [type=button] {
   border-bottom: 4px solid #ffffff;
   margin-bottom: 10px; }
   .App__header > * {
-    flex: 0 0 33.33%; }
+    flex: 0 0 auto; }
+  .App__header > *:first-child,
+  .App__header > *:last-child {
+    flex: 1 1 0; }
 
 .Board {
   background: #bdbdbd;
@@ -89,20 +96,30 @@ html [type=button] {
   padding: 0.25em 0; }
 
 .ResetButton {
-  height: 53px;
-  width: 53px;
-  padding: 4px;
+  height: 54px;
+  width: 54px;
+  padding: 0;
   background: #bdbdbd;
   border-top: 4px solid #ffffff;
   border-left: 4px solid #ffffff;
   border-right: 4px solid #7b7b7b;
   border-bottom: 4px solid #7b7b7b;
-  box-shadow: 0 0 0 1px #7b7b7b; }
+  box-shadow: 0 0 0 1px #7b7b7b;
+  border-radius: 0; }
+  .ResetButton:active, .ResetButton.is-pressed {
+    background: #bdbdbd;
+    border-top: 4px solid #7b7b7b;
+    border-left: 4px solid #7b7b7b;
+    border-right: 4px solid #ffffff;
+    border-bottom: 4px solid #ffffff; }
+    .ResetButton:active .ResetButton__inner, .ResetButton.is-pressed .ResetButton__inner {
+      background-size: 36px 36px; }
 
 .ResetButton__inner {
   width: 100%;
   height: 100%;
-  background-size: contain;
+  background-size: 40px 40px;
+  background-position: center center;
   background-image: url(/images/icon-slightly-smiling-face.png); }
   .ResetButton--sunglasses-face .ResetButton__inner {
     background-image: url(/images/icon-smiling-face-with-sunglasses.png); }
@@ -111,10 +128,19 @@ html [type=button] {
   .ResetButton--dead-face .ResetButton__inner {
     background-image: url(/images/icon-dizzy-face.png); }
 
-.Timer {
-  font-family: 'Orbitron', sans-serif;
+.timer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center; }
+
+.timer__inner {
+  font-family: 'led16sgmnt';
   color: #f20d1b;
-  background: black; }
+  background: black;
+  line-height: 1;
+  padding: 0.2em 0.175em 0;
+  font-size: 2.2em; }
 
 .Square {
   background: #bdbdbd;
@@ -123,6 +149,7 @@ html [type=button] {
   border-right: 4px solid #7b7b7b;
   border-bottom: 4px solid #7b7b7b;
   box-shadow: 0 0 0 1px #7b7b7b;
+  border-radius: 0;
   width: 32px;
   height: 32px;
   display: flex;

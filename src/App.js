@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import MineCounter from './components/MineCounter'
+import FlagCounter from './components/FlagCounter'
 import ResetButton from './components/ResetButton'
 import Timer from './components/Timer'
 import Board from './components/Board'
@@ -9,7 +9,7 @@ class App extends Component {
     return (
       <div className='App'>
         <header className='App__header'>
-          <MineCounter />
+          <FlagCounter />
           <ResetButton />
           <Timer />
         </header>

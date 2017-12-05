@@ -13,6 +13,10 @@
   @include drop-section;
   margin-bottom: 10px;
   > * {
-    flex: 0 0 33.33%;
+    flex: 0 0 auto;
+  }
+  > *:first-child,
+  > *:last-child {
+    flex: 1 1 0;
   }
 }

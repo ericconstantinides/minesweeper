@@ -4,9 +4,9 @@ class ResetButton extends Component {
   render () {
     return (
       <div className='ResetButton__container'>
-        <div className='ResetButton'>
+        <button className='ResetButton XXis-pressed'>
           <div className='ResetButton__inner' />
-        </div>
+        </button>
       </div>
     )
   }
