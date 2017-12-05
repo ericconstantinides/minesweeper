@@ -1,4 +1,4 @@
-import { GAME_CREATE } from './types'
+import { GAME_CREATE, GAME_LOSE, GAME_SWEEP } from './types'
 
 export function createGame (length = 9, height = 9, numMines = 10) {
   // turn the length and height into x y coords:
@@ -81,4 +81,27 @@ function isMine (mines, { x, y }) {
     return true
   }
   return false
+}
+
+export function clickSquare (game, { x, y }) {
+  const { board, mines } = game
+  // check if it's a mine:
+  if (board[x][y].isMine) {
+    console.log('you lose')
+    return {
+      type: GAME_LOSE,
+      payload: board
+    }
+  }
+  // now check if it's a number:
+  if (board[x][y].minesNearby > 0) {
+    // just sweep that square:
+    console.log('one sweep')
+    board[x][y].isSwept = true
+    console.log(board)
+    return {
+      type: GAME_SWEEP,
+      payload: board
+    }
+  }
 }

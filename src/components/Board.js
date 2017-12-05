@@ -7,6 +7,10 @@ class Board extends Component {
   componentDidMount () {
     this.props.createGame(10, 10, 15)
   }
+  handleSquareClick = coords => event => {
+    console.log(coords)
+    this.props.clickSquare(this.props.game, coords)
+  }
   renderBoard () {
     if (!(this.props.game && this.props.game.board)) return
     let renderedBoard = []
@@ -16,10 +20,13 @@ class Board extends Component {
       for (let y = 0; y < board[x].length; y++) {
         row.push(
           <Square
-            swept
+            swept={board[x][y].isSwept}
+            handleSquareClick={this.handleSquareClick}
             mine={board[x][y].isMine}
             minesNearby={board[x][y].minesNearby}
             key={x.toString() + ',' + y.toString()}
+            x={x}
+            y={y}
           />
         )
       }

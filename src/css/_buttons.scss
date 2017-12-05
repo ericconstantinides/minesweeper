@@ -1,3 +1,10 @@
+@mixin drop-section {
+  background: #bdbdbd;
+  border-top: 4px solid #7b7b7b;
+  border-left: 4px solid #7b7b7b;
+  border-right: 4px solid #ffffff;
+  border-bottom: 4px solid #ffffff;
+}
 @mixin button {
   background: #bdbdbd;
   border-top: 4px solid #ffffff;
@@ -6,11 +13,7 @@
   border-bottom: 4px solid #7b7b7b;
   box-shadow: 0 0 0 1px #7b7b7b;
   border-radius: 0;
-}
-@mixin drop-section {
-  background: #bdbdbd;
-  border-top: 4px solid #7b7b7b;
-  border-left: 4px solid #7b7b7b;
-  border-right: 4px solid #ffffff;
-  border-bottom: 4px solid #ffffff;
+  &:active {
+    @include drop-section;
+  }
 }

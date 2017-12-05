@@ -5,15 +5,19 @@ const Square = props => {
   const mineClass = props.mine ? 'is-mine' : 'not-mine'
   const sweptClass = props.swept ? 'is-swept' : 'not-swept'
   const flagClass = props.flag ? 'is-flag' : 'not-flag'
+  const {x, y} = props
   return (
-    <div className={`Square ${mineClass} ${sweptClass} ${flagClass}`}>
+    <button
+      onClick={props.handleSquareClick({ x, y })}
+      className={`Square ${mineClass} ${sweptClass} ${flagClass}`}
+    >
       <div className='Square__inner'>
-        {props.minesNearby > 0 &&
+        {props.swept && props.minesNearby > 0 &&
           <span className={`Square__helper has-${props.minesNearby}`}>
             {props.minesNearby}
           </span>}
       </div>
-    </div>
+    </button>
   )
 }
 
