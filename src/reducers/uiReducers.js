@@ -1,20 +1,13 @@
-import {
-  AUTH_USER,
-  UNAUTH_USER,
-  AUTH_ERROR,
-  FETCH_GATED
-} from '../actions/types'
+import { UI_SHOW_MODAL } from '../actions/types'
 
-export default function (state = {}, action) {
+const initialState = {
+  modalActive: false
+}
+
+export default function (state = initialState, action) {
   switch (action.type) {
-    case AUTH_USER:
-      return { ...state, error: '', authenticated: true }
-    case UNAUTH_USER:
-      return { ...state, authenticated: false }
-    case AUTH_ERROR:
-      return { ...state, error: action.payload }
-    case FETCH_GATED:
-      return { ...state, gated: action.payload }
+    case UI_SHOW_MODAL:
+      return { ...state, modalActive: true }
     default:
   }
   return state

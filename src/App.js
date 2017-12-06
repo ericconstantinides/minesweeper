@@ -37,32 +37,45 @@ class App extends Component {
     if (status !== 'playing' && status !== 'ready') return
     this.setState({resetButtonClass: ''})
   }
+  handleModalButtonClick = () => {
+    this.props.showUiModal()
+  }
   render () {
     let flagsAvailable = 0
     if (this.props.game.size.numMines) {
       flagsAvailable = this.props.game.size.numMines - this.props.game.flagsRaised
     }
     return (
-      <div className={`App App--${this.props.game.status}`}>
-        <header className='App__header'>
-          <FlagCounter flagsAvailable={flagsAvailable} />
-          <ResetButton
-            resetButtonClass={this.state.resetButtonClass}
-            handleResetClick={this.handleResetClick}
+      <div className='App__container'>
+        <div className={`App App--${this.props.game.status}`}>
+          <header className='App__header'>
+            <FlagCounter flagsAvailable={flagsAvailable} />
+            <ResetButton
+              resetButtonClass={this.state.resetButtonClass}
+              handleResetClick={this.handleResetClick}
+            />
+            <Timer status={this.props.game.status} />
+          </header>
+          <Board
+            handleSquareMouseDown={this.handleSquareMouseDown}
+            handleSquareMouseUp={this.handleSquareMouseUp}
           />
-          <Timer status={this.props.game.status} />
-        </header>
-        <Board
-          handleSquareMouseDown={this.handleSquareMouseDown}
-          handleSquareMouseUp={this.handleSquareMouseUp}
-        />
+        </div>
+        <div className='modal__button-container'>
+          <button onClick={this.handleModalButtonClick} className='modal__button'>
+            Game Settings
+          </button>
+        </div>
+        {this.props.ui.modalActive &&
+          <div>MODAL TIME</div>
+        }
       </div>
     )
   }
 }
 
-function mapStateToProps ({ game }) {
-  return { game }
+function mapStateToProps ({ game, ui }) {
+  return { game, ui }
 }
 
 export default connect(mapStateToProps, actions)(App)

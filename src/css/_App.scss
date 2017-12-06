@@ -1,10 +1,12 @@
 #root {
   display: flex;
 }
-.App {
+.App__container {
   display: flex;
   flex-flow: column;
   margin: 0 auto;
+}
+.App {
   background: #bdbdbd;
   padding: 1em;
 }

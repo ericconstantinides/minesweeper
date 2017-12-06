@@ -52,13 +52,38 @@ html [type=button] {
   font-family: 'led16sgmnt';
   src: url("/fonts/led16sgmnt-Regular.ttf"); }
 
+.modal__button-container {
+  padding: 1em;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center; }
+
+.modal__button {
+  cursor: pointer;
+  color: #0275d8;
+  text-transform: uppercase;
+  font-weight: bold;
+  user-select: none;
+  border: 1px solid #0275d8;
+  padding: 0.5em 1em;
+  border-radius: .25em;
+  line-height: 1.25;
+  transition: all .15s ease-in-out; }
+  .modal__button:hover {
+    color: #fff;
+    background-color: #0275d8;
+    border-color: #0275d8; }
+
 #root {
   display: flex; }
 
-.App {
+.App__container {
   display: flex;
   flex-flow: column;
-  margin: 0 auto;
+  margin: 0 auto; }
+
+.App {
   background: #bdbdbd;
   padding: 1em; }
 
