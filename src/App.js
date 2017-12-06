@@ -13,7 +13,12 @@ class App extends Component {
     resetButtonClass: ''
   }
   componentDidMount () {
-    this.props.createGame(9, 9, 10)
+    this.props.createGame(9, 9, 5)
+  }
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.game.isWon) {
+      this.setState({resetButtonClass: 'ResetButton--win'})
+    }
   }
   handleResetClick = () => {
     this.props.createGame(9, 9, 10)

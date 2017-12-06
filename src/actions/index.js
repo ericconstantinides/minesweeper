@@ -1,4 +1,11 @@
-import { GAME_CREATE, GAME_START, GAME_UPDATE_FLAGS, GAME_LOSE, GAME_SWEEP } from './types'
+import {
+  GAME_CREATE,
+  GAME_START,
+  GAME_UPDATE_FLAGS,
+  GAME_WIN,
+  GAME_LOSE,
+  GAME_SWEEP
+} from './types'
 
 export function createGame (width = 9, height = 9, numMines = 10) {
   // turn the width and height into xMax yMax coords based off 0:
@@ -96,10 +103,25 @@ export function clickSquare (game, { x, y }) {
       payload: board
     }
   }
-  // it's not a mines so let's investigate nearby squares:
+  // square is not a mines so let's investigate nearby squares:
   const sweptBoard = squareCursion(board, size, { x, y })
   const squaresSwept = countSwept(sweptBoard, size)
-  console.log('swept:', squaresSwept)
+
+  // now let's check the status of our game:
+  // if the squaresSwept + number of mines = all the squares:
+  if (squaresSwept + size.numMines === (size.width * size.height)) {
+    console.log('YOU WIN!')
+    // now let's cover all the mines with flags
+
+    return {
+      type: GAME_WIN,
+      payload: {
+        board: updateMines(sweptBoard, mines, 'win'),
+        squaresSwept,
+        flagsRaised: size.numMines
+      }
+    }
+  }
   return {
     type: GAME_SWEEP,
     payload: {
@@ -144,6 +166,15 @@ function countSwept (board, { xMax, yMax }) {
   return swept
 }
 
+function updateMines (board, mines, status) {
+  if (status === 'win') {
+    // debugger
+    Object.keys(mines).forEach(key => {
+      board[mines[key].x][mines[key].y].isFlag = true
+    })
+    return board
+  }
+}
 export function startGame () {
   return {
     type: GAME_START,
@@ -151,11 +182,13 @@ export function startGame () {
   }
 }
 
-export function toggleFlag ({ board, flagsRaised }, {x, y}) {
+export function toggleFlag ({ board, flagsRaised }, { x, y }) {
   // toggle the flag:
   board[x][y].isFlag = !board[x][y].isFlag
   // update the flagsRaised:
-  const flagsRaisedUpdated = board[x][y].isFlag ? flagsRaised + 1 : flagsRaised - 1
+  const flagsRaisedUpdated = board[x][y].isFlag
+    ? flagsRaised + 1
+    : flagsRaised - 1
   return {
     type: GAME_UPDATE_FLAGS,
     payload: {
