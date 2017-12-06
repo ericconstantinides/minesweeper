@@ -13,10 +13,14 @@ class App extends Component {
     this.props.createGame(9, 9, 10)
   }
   render () {
+    let flagsAvailable = 0
+    if (this.props.game.size.numMines) {
+      flagsAvailable = this.props.game.size.numMines - this.props.game.flagsRaised
+    }
     return (
       <div className='App'>
         <header className='App__header'>
-          <FlagCounter />
+          <FlagCounter flagsAvailable={flagsAvailable} />
           <ResetButton />
           <Timer timerActive={this.props.game.timerActive} />
         </header>

@@ -4,7 +4,7 @@ export function createGame (width = 9, height = 9, numMines = 10) {
   // turn the width and height into xMax yMax coords based off 0:
   const xMax = width - 1
   const yMax = height - 1
-  const size = { width, height, xMax, yMax }
+  const size = { width, height, xMax, yMax, numMines }
   // generate random mines:
   const mines = generateMines(xMax, yMax, numMines)
   // lay the mines on the board:
@@ -154,12 +154,12 @@ export function toggleFlag ({ board, flagsRaised }, {x, y}) {
   // toggle the flag:
   board[x][y].isFlag = !board[x][y].isFlag
   // update the flagsRaised:
-  const flagsRaisedUpdated = board[x][y].isFlag ? flagsRaised++ : flagsRaised--
+  const flagsRaisedUpdated = board[x][y].isFlag ? flagsRaised + 1 : flagsRaised - 1
   return {
     type: GAME_UPDATE_FLAGS,
     payload: {
       board,
-      flagRaised: flagsRaisedUpdated
+      flagsRaised: flagsRaisedUpdated
     }
   }
 }
