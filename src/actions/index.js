@@ -1,4 +1,4 @@
-import { GAME_CREATE, GAME_LOSE, GAME_SWEEP } from './types'
+import { GAME_CREATE, GAME_START, GAME_LOSE, GAME_SWEEP } from './types'
 
 export function createGame (width = 9, height = 9, numMines = 10) {
   // turn the width and height into xMax yMax coords based off 0:
@@ -39,7 +39,7 @@ function layMines (xMax, yMax, mines) {
   // create the board
   let board = []
   for (let x = 0; x <= xMax; x++) {
-    // now create a fresh row:
+    // now create a fresh column:
     let column = []
     for (let y = 0; y <= yMax; y++) {
       column.push({
@@ -95,25 +95,21 @@ export function clickSquare (game, { x, y }) {
       payload: board
     }
   }
-  // now check if it's a number:
-  if (board[x][y].minesNearby > 0) {
-    // just sweep that square:
-    console.log('one sweep')
-    board[x][y].isSwept = true
-    return {
-      type: GAME_SWEEP,
-      payload: board
-    }
-  }
-  // it's an empty square so let's recursively go through nearby squares:
+  // it's not a mines so let's investigate nearby squares:
+  const sweptBoard = squareCursion(board, size, { x, y })
+  const squaresSwept = countSwept(sweptBoard, size)
+  console.log('swept:', squaresSwept)
   return {
     type: GAME_SWEEP,
-    payload: squareCursion(board, size, { x, y })
+    payload: {
+      sweptBoard,
+      squaresSwept
+    }
   }
 }
 
 function squareCursion (board, size, { x, y }) {
-  // console.log(board.length)
+  // sweep the square:
   board[x][y].isSwept = true
   if (board[x][y].minesNearby > 0) {
     return board
@@ -132,4 +128,23 @@ function squareCursion (board, size, { x, y }) {
     }
   }
   return board
+}
+
+function countSwept (board, { xMax, yMax }) {
+  let swept = 0
+  // cycle through every piece on the board:
+  for (let x = 0; x <= xMax; x++) {
+    for (let y = 0; y <= yMax; y++) {
+      // now see if it's swept:
+      if (board[x][y].isSwept) swept++
+    }
+  }
+  return swept
+}
+
+export function startGame () {
+  return {
+    type: GAME_START,
+    action: null
+  }
 }

@@ -4,10 +4,11 @@ import * as actions from '../actions'
 import Square from './Square'
 
 class Board extends Component {
-  componentDidMount () {
-    this.props.createGame(20, 10, 10)
-  }
   handleSquareClick = coords => event => {
+    if (this.props.game.squaresSwept === 0) {
+      // start the timer
+      this.props.startGame()
+    }
     const {x, y} = coords
     console.log({x, y})
     this.props.clickSquare(this.props.game, coords)
