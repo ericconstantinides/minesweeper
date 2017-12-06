@@ -53,3 +53,19 @@
     @include button
   }
 }
+
+/*
+ * Preload images:
+ */
+body:after {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  z-index: -1;
+  content:
+    url('/images/icon-bomb.png')
+    url('/images/icon-triangular-flag-on-post.png')
+    url('/images/icon-collision-symbol.png')
+    url('/images/icon-bomb.png');
+}
