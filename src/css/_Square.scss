@@ -10,6 +10,9 @@
     border: 1px solid #7b7b7b;
     box-shadow: none;
   }
+  &.not-swept:active {
+    @include drop-section;
+  }
 }
 .Square__inner {
   width: 20px;
@@ -43,4 +46,10 @@
   &.has-3 { color: #ff041d; }
   &.has-4 { color: #010077; }
   &.has-5 { color: #800108; }
+}
+.App--lost,
+.App--won {
+  .Square.not-swept:active {
+    @include button
+  }
 }

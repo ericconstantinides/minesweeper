@@ -3,7 +3,7 @@ import React from 'react'
 const Square = props => {
   // statuses: mine, swept, unswept, flag
   const mineClass = (props.mine && props.swept) ? ' is-mine' : ''
-  const sweptClass = props.swept ? ' is-swept' : ''
+  const sweptClass = props.swept ? ' is-swept' : ' not-swept'
   const flagClass = props.flag ? ' is-flag' : ''
   const {x, y, explosionCoords} = props
   const explodingClass = explosionCoords.x === x && explosionCoords.y === y ? ' is-exploding' : ''

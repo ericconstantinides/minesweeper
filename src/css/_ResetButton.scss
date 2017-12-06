@@ -9,9 +9,12 @@
   width: 44px;
   padding: 0;
   @include button;
-  &:active .ResetButton__inner {
-    background-size: 28px 28px;
-    background-image: url(/images/icon-face-with-open-mouth.png);
+  &:active {
+    @include drop-section;
+    .ResetButton__inner {
+      background-size: 28px 28px;
+      background-image: url(/images/icon-face-with-open-mouth.png);
+    }
   }
 }
 .ResetButton__inner {

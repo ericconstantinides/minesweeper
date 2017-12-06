@@ -13,7 +13,7 @@ class App extends Component {
     resetButtonClass: ''
   }
   componentDidMount () {
-    this.props.createGame(9, 9, 5)
+    this.props.createGame()
   }
   componentWillReceiveProps(nextProps) {
     if (nextProps.game.status === 'won') {
@@ -25,7 +25,7 @@ class App extends Component {
     }
   }
   handleResetClick = () => {
-    this.props.createGame(9, 9, 5)
+    this.props.createGame()
   }
   handleSquareMouseDown = coords => event => {
     const { status } = this.props.game
@@ -43,7 +43,7 @@ class App extends Component {
       flagsAvailable = this.props.game.size.numMines - this.props.game.flagsRaised
     }
     return (
-      <div className='App'>
+      <div className={`App App--${this.props.game.status}`}>
         <header className='App__header'>
           <FlagCounter flagsAvailable={flagsAvailable} />
           <ResetButton

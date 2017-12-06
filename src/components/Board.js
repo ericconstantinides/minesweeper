@@ -6,8 +6,8 @@ import Square from './Square'
 class Board extends Component {
   handleSquareClick = coords => event => {
     event.preventDefault()
-    if (this.props.game.board[coords.x][coords.y].isFlag) return
-    const { status } = this.props.game
+    const { status, board } = this.props.game
+    if (board[coords.x][coords.y].isSwept) return
     if (status !== 'playing' && status !== 'ready') return
     if (this.props.game.squaresSwept === 0) {
       // start the timer
@@ -19,8 +19,9 @@ class Board extends Component {
   }
   handleSquareRightClick = coords => event => {
     event.preventDefault()
-    if (this.props.game.board[coords.x][coords.y].isSwept) return
-    console.log('right click')
+    const { status, board } = this.props.game
+    if (board[coords.x][coords.y].isSwept) return
+    if (status !== 'playing' && status !== 'ready') return
     this.props.toggleFlag(this.props.game, coords)
   }
   renderBoard () {
