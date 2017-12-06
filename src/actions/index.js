@@ -1,4 +1,4 @@
-import { GAME_CREATE, GAME_START, GAME_LOSE, GAME_SWEEP } from './types'
+import { GAME_CREATE, GAME_START, GAME_UPDATE_FLAGS, GAME_LOSE, GAME_SWEEP } from './types'
 
 export function createGame (width = 9, height = 9, numMines = 10) {
   // turn the width and height into xMax yMax coords based off 0:
@@ -44,7 +44,8 @@ function layMines (xMax, yMax, mines) {
     for (let y = 0; y <= yMax; y++) {
       column.push({
         isMine: isMine(mines, { x, y }),
-        isSwept: false
+        isSwept: false,
+        isFlag: false
       })
     }
     board.push(column)
@@ -146,5 +147,19 @@ export function startGame () {
   return {
     type: GAME_START,
     action: null
+  }
+}
+
+export function toggleFlag ({ board, flagsRaised }, {x, y}) {
+  // toggle the flag:
+  board[x][y].isFlag = !board[x][y].isFlag
+  // update the flagsRaised:
+  const flagsRaisedUpdated = board[x][y].isFlag ? flagsRaised++ : flagsRaised--
+  return {
+    type: GAME_UPDATE_FLAGS,
+    payload: {
+      board,
+      flagRaised: flagsRaisedUpdated
+    }
   }
 }

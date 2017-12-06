@@ -1,6 +1,7 @@
 import {
   GAME_CREATE,
   GAME_START,
+  GAME_UPDATE_FLAGS,
   GAME_LOSE,
   GAME_SWEEP
 } from '../actions/types'
@@ -10,7 +11,8 @@ const initialState = {
   board: [],
   size: {},
   timerActive: false,
-  squaresSwept: 0
+  squaresSwept: 0,
+  flagsRaised: 0
 }
 
 export default function (state = initialState, action) {
@@ -20,6 +22,12 @@ export default function (state = initialState, action) {
       return { ...state, mines, board, size }
     case GAME_START:
       return { ...state, timerActive: true }
+    case GAME_UPDATE_FLAGS:
+      return {
+        ...state,
+        board: action.payload.board,
+        flagsRaised: action.payload.flagsRaised
+      }
     case GAME_LOSE:
       return initialState
     case GAME_SWEEP:

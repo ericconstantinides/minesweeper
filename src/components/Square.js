@@ -9,6 +9,7 @@ const Square = props => {
   return (
     <button
       onClick={props.handleSquareClick({ x, y })}
+      onContextMenu={props.handleSquareRightClick({ x, y })}
       className={`Square ${mineClass} ${sweptClass} ${flagClass}`}
     >
       <div className='Square__inner'>

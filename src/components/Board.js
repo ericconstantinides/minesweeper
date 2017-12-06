@@ -5,13 +5,20 @@ import Square from './Square'
 
 class Board extends Component {
   handleSquareClick = coords => event => {
+    event.preventDefault()
+    console.log(event.type)
     if (this.props.game.squaresSwept === 0) {
       // start the timer
-      this.props.startGame()
+      // this.props.startGame()
     }
     const {x, y} = coords
     console.log({x, y})
     this.props.clickSquare(this.props.game, coords)
+  }
+  handleSquareRightClick = coords => event => {
+    event.preventDefault()
+    console.log('right click')
+    this.props.toggleFlag(this.props.game, coords)
   }
   renderBoard () {
     if (!(this.props.game && this.props.game.board)) return
@@ -24,7 +31,9 @@ class Board extends Component {
           <Square
             swept={board[x][y].isSwept}
             handleSquareClick={this.handleSquareClick}
+            handleSquareRightClick={this.handleSquareRightClick}
             mine={board[x][y].isMine}
+            flag={board[x][y].isFlag}
             minesNearby={board[x][y].minesNearby}
             key={x.toString() + ',' + y.toString()}
             x={x}
