@@ -14,7 +14,8 @@ const initialState = {
   timerActive: false,
   squaresSwept: 0,
   flagsRaised: 0,
-  isWon: false
+  explosionCoords: false,
+  status: 'playing'
 }
 
 export default function (state = initialState, action) {
@@ -33,13 +34,19 @@ export default function (state = initialState, action) {
     case GAME_WIN:
       return {
         ...state,
-        isWon: true,
+        status: 'won',
         board: action.payload.board,
         squaresSwept: action.payload.squaresSwept,
         flagsRaised: action.payload.flagsRaised
       }
     case GAME_LOSE:
-      return initialState
+      const { explosionCoords } = action.payload
+      return {
+        ...state,
+        status: 'lost',
+        board: action.payload.board,
+        explosionCoords
+      }
     case GAME_SWEEP:
       const { sweptBoard, squaresSwept } = action.payload
       return { ...state, board: sweptBoard, squaresSwept }

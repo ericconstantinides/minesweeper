@@ -21,6 +21,9 @@
   .Square.is-flag & {
     background-image: url(/images/icon-triangular-flag-on-post.png);
   }
+  .Square.is-exploding & {
+    background-image: url(/images/icon-collision-symbol.png);
+  }
 }
 
 .Square__helper {

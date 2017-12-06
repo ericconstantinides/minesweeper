@@ -127,7 +127,7 @@ html [type=button] {
     background-image: url(/images/icon-smiling-face-with-sunglasses.png); }
   .ResetButton--shocked .ResetButton__inner {
     background-image: url(/images/icon-face-with-open-mouth.png); }
-  .ResetButton--lose .ResetButton__inner {
+  .ResetButton--lost .ResetButton__inner {
     background-image: url(/images/icon-dizzy-face.png); }
 
 .timer {
@@ -179,6 +179,8 @@ html [type=button] {
     background-image: url(/images/icon-bomb.png); }
   .Square.is-flag .Square__inner {
     background-image: url(/images/icon-triangular-flag-on-post.png); }
+  .Square.is-exploding .Square__inner {
+    background-image: url(/images/icon-collision-symbol.png); }
 
 .Square__helper {
   font-family: 'Baloo Paaji', cursive;

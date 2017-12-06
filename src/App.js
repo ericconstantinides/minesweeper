@@ -16,17 +16,23 @@ class App extends Component {
     this.props.createGame(9, 9, 5)
   }
   componentWillReceiveProps(nextProps) {
-    if (nextProps.game.isWon) {
+    if (nextProps.game.status === 'won') {
       this.setState({resetButtonClass: 'ResetButton--win'})
+    } else if (nextProps.game.status === 'lost') {
+      this.setState({resetButtonClass: 'ResetButton--lost'})
+    } else {
+      this.setState({resetButtonClass: ''})
     }
   }
   handleResetClick = () => {
     this.props.createGame(9, 9, 10)
   }
   handleSquareMouseDown = coords => event => {
+    if (this.props.game.status !== 'playing') return
     this.setState({resetButtonClass: 'ResetButton--shocked'})
   }
   handleSquareMouseUp = coords => event => {
+    if (this.props.game.status !== 'playing') return
     this.setState({resetButtonClass: ''})
   }
   render () {

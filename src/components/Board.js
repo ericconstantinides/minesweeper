@@ -7,6 +7,7 @@ class Board extends Component {
   handleSquareClick = coords => event => {
     event.preventDefault()
     if (this.props.game.board[coords.x][coords.y].isFlag) return
+    if (this.props.game.status !== 'playing') return
     if (this.props.game.squaresSwept === 0) {
       // start the timer
       // this.props.startGame()
@@ -37,6 +38,7 @@ class Board extends Component {
             handleSquareMouseUp={this.props.handleSquareMouseUp}
             mine={board[x][y].isMine}
             flag={board[x][y].isFlag}
+            explosionCoords={this.props.game.explosionCoords}
             minesNearby={board[x][y].minesNearby}
             key={x.toString() + ',' + y.toString()}
             x={x}

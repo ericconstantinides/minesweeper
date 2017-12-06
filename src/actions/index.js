@@ -97,10 +97,14 @@ export function clickSquare (game, { x, y }) {
   const { board, mines, size } = game
   // check if it's a mine:
   if (board[x][y].isMine) {
-    console.log('you lose')
+    console.log('YOU LOSE!')
+    // reveal all the mines:
     return {
       type: GAME_LOSE,
-      payload: board
+      payload: {
+        board: updateMines(board, mines, 'lose'),
+        explosionCoords: {x, y}
+      }
     }
   }
   // square is not a mines so let's investigate nearby squares:
@@ -167,13 +171,14 @@ function countSwept (board, { xMax, yMax }) {
 }
 
 function updateMines (board, mines, status) {
-  if (status === 'win') {
-    // debugger
-    Object.keys(mines).forEach(key => {
-      board[mines[key].x][mines[key].y].isFlag = true
-    })
-    return board
-  }
+  Object.keys(mines).forEach(i => {
+    if (status === 'win') {
+      board[mines[i].x][mines[i].y].isFlag = true
+    } else {
+      board[mines[i].x][mines[i].y].isSwept = true
+    }
+  })
+  return board
 }
 export function startGame () {
   return {
