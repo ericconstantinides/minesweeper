@@ -9,8 +9,20 @@ import Board from './components/Board'
 import * as actions from './actions'
 
 class App extends Component {
+  state = {
+    resetButtonClass: ''
+  }
   componentDidMount () {
     this.props.createGame(9, 9, 10)
+  }
+  handleResetClick = () => {
+    this.props.createGame(9, 9, 10)
+  }
+  handleSquareMouseDown = coords => event => {
+    this.setState({resetButtonClass: 'ResetButton--shocked'})
+  }
+  handleSquareMouseUp = coords => event => {
+    this.setState({resetButtonClass: ''})
   }
   render () {
     let flagsAvailable = 0
@@ -21,10 +33,16 @@ class App extends Component {
       <div className='App'>
         <header className='App__header'>
           <FlagCounter flagsAvailable={flagsAvailable} />
-          <ResetButton />
+          <ResetButton
+            resetButtonClass={this.state.resetButtonClass}
+            handleResetClick={this.handleResetClick}
+          />
           <Timer timerActive={this.props.game.timerActive} />
         </header>
-        <Board />
+        <Board
+          handleSquareMouseDown={this.handleSquareMouseDown}
+          handleSquareMouseUp={this.handleSquareMouseUp}
+        />
       </div>
     )
   }

@@ -33,6 +33,8 @@ class Board extends Component {
             swept={board[x][y].isSwept}
             handleSquareClick={this.handleSquareClick}
             handleSquareRightClick={this.handleSquareRightClick}
+            handleSquareMouseDown={this.props.handleSquareMouseDown}
+            handleSquareMouseUp={this.props.handleSquareMouseUp}
             mine={board[x][y].isMine}
             flag={board[x][y].isFlag}
             minesNearby={board[x][y].minesNearby}

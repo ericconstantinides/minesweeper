@@ -20,13 +20,13 @@
   background-size: 32px 32px;
   background-position: center center;
   background-image: url(/images/icon-slightly-smiling-face.png);
-  .ResetButton--sunglasses-face & {
+  .ResetButton--win & {
     background-image: url(/images/icon-smiling-face-with-sunglasses.png);
   }
-  .ResetButton--open-mouth-face & {
+  .ResetButton--shocked & {
     background-image: url(/images/icon-face-with-open-mouth.png);
   }
-  .ResetButton--dead-face & {
+  .ResetButton--lose & {
     background-image: url(/images/icon-dizzy-face.png);
   }
 }

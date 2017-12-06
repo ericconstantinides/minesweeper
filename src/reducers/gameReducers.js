@@ -19,7 +19,7 @@ export default function (state = initialState, action) {
   switch (action.type) {
     case GAME_CREATE:
       const { mines, board, size } = action.payload
-      return { ...state, mines, board, size }
+      return { ...initialState, mines, board, size }
     case GAME_START:
       return { ...state, timerActive: true }
     case GAME_UPDATE_FLAGS:
