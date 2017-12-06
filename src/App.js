@@ -25,14 +25,16 @@ class App extends Component {
     }
   }
   handleResetClick = () => {
-    this.props.createGame(9, 9, 10)
+    this.props.createGame(9, 9, 5)
   }
   handleSquareMouseDown = coords => event => {
-    if (this.props.game.status !== 'playing') return
+    const { status } = this.props.game
+    if (status !== 'playing' && status !== 'ready') return
     this.setState({resetButtonClass: 'ResetButton--shocked'})
   }
   handleSquareMouseUp = coords => event => {
-    if (this.props.game.status !== 'playing') return
+    const { status } = this.props.game
+    if (status !== 'playing' && status !== 'ready') return
     this.setState({resetButtonClass: ''})
   }
   render () {
@@ -48,7 +50,7 @@ class App extends Component {
             resetButtonClass={this.state.resetButtonClass}
             handleResetClick={this.handleResetClick}
           />
-          <Timer timerActive={this.props.game.timerActive} />
+          <Timer status={this.props.game.status} />
         </header>
         <Board
           handleSquareMouseDown={this.handleSquareMouseDown}

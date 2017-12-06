@@ -11,11 +11,10 @@ const initialState = {
   mines: {},
   board: [],
   size: {},
-  timerActive: false,
   squaresSwept: 0,
   flagsRaised: 0,
   explosionCoords: false,
-  status: 'playing'
+  status: 'ready'
 }
 
 export default function (state = initialState, action) {
@@ -24,7 +23,7 @@ export default function (state = initialState, action) {
       const { mines, board, size } = action.payload
       return { ...initialState, mines, board, size }
     case GAME_START:
-      return { ...state, timerActive: true }
+      return { ...state, status: 'playing' }
     case GAME_UPDATE_FLAGS:
       return {
         ...state,

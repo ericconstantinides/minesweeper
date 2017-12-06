@@ -7,9 +7,18 @@ class Timer extends Component {
     counter: 0
   }
   componentDidUpdate(prevProps, prevState) {
-    if (!prevProps.timerActive && this.props.timerActive) {
+    // start the timer (we start the timer at 1 second instead of 0 seconds):
+    if (prevProps.status !== 'playing' && this.props.status === 'playing') {
       let timer = setInterval(this.tick, 1000)
-      this.setState({timer})
+      this.setState({timer, counter: 1})
+    }
+    // stop the timer:
+    if (prevProps.status === 'playing' && this.props.status !== 'playing') {
+      clearInterval(this.state.timer)
+    }
+    // reset the timer:
+    if (prevProps.status !== 'ready' && this.props.status === 'ready') {
+      this.setState({counter: 0})
     }
   }
   tick = () => {

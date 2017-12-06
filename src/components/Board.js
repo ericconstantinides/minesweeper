@@ -7,10 +7,11 @@ class Board extends Component {
   handleSquareClick = coords => event => {
     event.preventDefault()
     if (this.props.game.board[coords.x][coords.y].isFlag) return
-    if (this.props.game.status !== 'playing') return
+    const { status } = this.props.game
+    if (status !== 'playing' && status !== 'ready') return
     if (this.props.game.squaresSwept === 0) {
       // start the timer
-      // this.props.startGame()
+      this.props.startGame()
     }
     const {x, y} = coords
     console.log({x, y})
