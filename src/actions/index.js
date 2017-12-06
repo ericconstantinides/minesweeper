@@ -1,19 +1,20 @@
 import { GAME_CREATE, GAME_LOSE, GAME_SWEEP } from './types'
 
-export function createGame (length = 9, height = 9, numMines = 10) {
-  // turn the length and height into x y coords:
-  const xMax = length - 1
+export function createGame (width = 9, height = 9, numMines = 10) {
+  // turn the width and height into xMax yMax coords based off 0:
+  const xMax = width - 1
   const yMax = height - 1
+  const size = { width, height, xMax, yMax }
   // generate random mines:
   const mines = generateMines(xMax, yMax, numMines)
   // lay the mines on the board:
   const board = layMines(xMax, yMax, mines)
   // add the board helpers:
-  const boardReady = addBoardHelpers(board)
+  const boardReady = addBoardHelpers(xMax, yMax, board)
   return {
     type: GAME_CREATE,
     payload: {
-      size: { length, height, xMax, yMax },
+      size,
       mines,
       board: boardReady
     }
@@ -39,22 +40,22 @@ function layMines (xMax, yMax, mines) {
   let board = []
   for (let x = 0; x <= xMax; x++) {
     // now create a fresh row:
-    let row = []
+    let column = []
     for (let y = 0; y <= yMax; y++) {
-      row.push({
+      column.push({
         isMine: isMine(mines, { x, y }),
         isSwept: false
       })
     }
-    board.push(row)
+    board.push(column)
   }
   return board
 }
 
-function addBoardHelpers (board) {
+function addBoardHelpers (xMax, yMax, board) {
   // cycle through every piece on the board:
-  for (let x = 0; x < board.length; x++) {
-    for (let y = 0; y < board[x].length; y++) {
+  for (let x = 0; x <= xMax; x++) {
+    for (let y = 0; y <= yMax; y++) {
       // now find the nearby mines
       board[x][y].minesNearby = findNearbyMines(board, { x, y })
     }

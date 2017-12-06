@@ -187,7 +187,8 @@ html [type=button] {
   width: 100%;
   align-items: center;
   justify-content: center;
-  font-size: 1.75em; }
+  font-size: 1.75em;
+  margin-top: 1px; }
   .Square__helper.has-1 {
     color: #0700f9; }
   .Square__helper.has-2 {

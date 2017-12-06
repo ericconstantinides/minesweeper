@@ -5,7 +5,7 @@ import Square from './Square'
 
 class Board extends Component {
   componentDidMount () {
-    this.props.createGame(10, 20, 10)
+    this.props.createGame(20, 10, 10)
   }
   handleSquareClick = coords => event => {
     const {x, y} = coords
@@ -15,10 +15,10 @@ class Board extends Component {
   renderBoard () {
     if (!(this.props.game && this.props.game.board)) return
     let renderedBoard = []
-    const { board } = this.props.game
-    for (let x = 0; x < board.length; x++) {
+    const { board, size: {xMax, yMax} } = this.props.game
+    for (let y = 0; y <= yMax; y++) {
       let row = []
-      for (let y = 0; y < board[x].length; y++) {
+      for (let x = 0; x <= xMax; x++) {
         row.push(
           <Square
             swept={board[x][y].isSwept}
@@ -31,7 +31,7 @@ class Board extends Component {
           />
         )
       }
-      renderedBoard.push(<div key={x} className='Board__row'>{row}</div>)
+      renderedBoard.push(<div key={y} className='Board__row'>{row}</div>)
     }
     return renderedBoard
   }
