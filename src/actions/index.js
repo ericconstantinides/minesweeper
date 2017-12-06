@@ -122,7 +122,8 @@ function squareCursion (board, size, { x, y }) {
         xChk >= 0 &&
         yChk <= size.yMax &&
         yChk >= 0 &&
-        !board[xChk][yChk].isSwept
+        !board[xChk][yChk].isSwept &&
+        !board[xChk][yChk].isFlag
       ) {
         board = squareCursion(board, size, { x: xChk, y: yChk })
       }
