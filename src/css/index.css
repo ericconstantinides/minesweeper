@@ -52,6 +52,23 @@ html [type=button] {
   font-family: 'led16sgmnt';
   src: url("/fonts/led16sgmnt-Regular.ttf"); }
 
+.Modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.875);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center; }
+
+.Modal__inner {
+  background: white;
+  border-radius: 0.25em;
+  padding: 1em; }
+
 .modal__button-container {
   padding: 1em;
   display: flex;
@@ -67,7 +84,7 @@ html [type=button] {
   user-select: none;
   border: 1px solid #0275d8;
   padding: 0.5em 1em;
-  border-radius: .25em;
+  border-radius: 0.25em;
   line-height: 1.25;
   transition: all .15s ease-in-out; }
   .modal__button:hover {

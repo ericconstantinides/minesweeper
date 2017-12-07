@@ -5,6 +5,7 @@ import FlagCounter from './components/FlagCounter'
 import ResetButton from './components/ResetButton'
 import Timer from './components/Timer'
 import Board from './components/Board'
+// import Modal from './components/Modal'
 
 import * as actions from './actions'
 
@@ -61,14 +62,14 @@ class App extends Component {
             handleSquareMouseUp={this.handleSquareMouseUp}
           />
         </div>
-        <div className='modal__button-container'>
+        {/* <div className='modal__button-container'>
           <button onClick={this.handleModalButtonClick} className='modal__button'>
             Game Settings
           </button>
         </div>
         {this.props.ui.modalActive &&
-          <div>MODAL TIME</div>
-        }
+          <Modal />
+        } */}
       </div>
     )
   }
