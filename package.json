@@ -18,6 +18,7 @@
     "watch-css": "yarn run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
     "dev": "concurrently 'npm run start' 'npm run watch-css'"
   },
+  "homepage:": "https://ericconstantinides.github.io/minesweeper/",
   "devDependencies": {
     "concurrently": "^3.5.1",
     "node-sass-chokidar": "^0.0.3"
