@@ -10,25 +10,50 @@ import {
 import * as gameFn from '../lib/gameFunctions'
 
 export function setGameSettings (width, height, numMines) {
-  const xMax = width - 1
-  const yMax = height - 1
   return {
     type: GAME_SET_SETTINGS,
-    payload: { width, height, xMax, yMax, numMines }
+    payload: {
+      width: width * 1,
+      height: height * 1,
+      xMax: width - 1,
+      yMax: height - 1,
+      numMines: numMines * 1
+    }
   }
 }
 
-export function createGame (width = 9, height = 9, numMines = 10) {
-  // turn the width and height into xMax yMax coords based off 0:
-  const xMax = width - 1
-  const yMax = height - 1
-  const size = { width, height, xMax, yMax, numMines }
+export function createGame (width, height, numMines) {
+  const gameStorageSize = window.localStorage.getItem('gameSize')
+  let size = {}
+  if (!(width && height && numMines) && gameStorageSize) {
+    size = JSON.parse(gameStorageSize)
+  } else if (width && height && numMines) {
+    // turn the width and height into xMax yMax coords based off 0:
+    size = {
+      width: width * 1,
+      height: height * 1,
+      xMax: width - 1,
+      yMax: height - 1,
+      numMines: numMines * 1
+    }
+  } else {
+    size = {
+      width: 9,
+      height: 9,
+      xMax: 8,
+      yMax: 8,
+      numMines: 10
+    }
+  }
   // generate random mines:
-  const mines = gameFn.generateMines(xMax, yMax, numMines)
+  const mines = gameFn.generateMines(size.xMax, size.yMax, size.numMines)
   // lay the mines on the board:
-  const board = gameFn.layMines(xMax, yMax, mines)
+  const board = gameFn.layMines(size.xMax, size.yMax, mines)
   // add the board helpers:
-  const boardReady = gameFn.addBoardHelpers(xMax, yMax, board)
+  const boardReady = gameFn.addBoardHelpers(size.xMax, size.yMax, board)
+
+  // save the settings to webstorage:
+  window.localStorage.setItem('gameSize', JSON.stringify(size))
   return {
     type: GAME_CREATE,
     payload: {
@@ -48,7 +73,7 @@ export function clickSquare (game, { x, y }) {
       type: GAME_LOSE,
       payload: {
         board: gameFn.updateMines(board, mines, 'lose'),
-        explosionCoords: {x, y}
+        explosionCoords: { x, y }
       }
     }
   }
@@ -58,8 +83,7 @@ export function clickSquare (game, { x, y }) {
 
   // now let's check the status of our game:
   // if the squaresSwept + number of mines = all the squares:
-  if (squaresSwept + size.numMines === (size.width * size.height)) {
-    console.log('YOU WIN!')
+  if (squaresSwept + size.numMines === size.width * size.height) {
     // now let's cover all the mines with flags
 
     return {
