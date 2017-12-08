@@ -1,4 +1,5 @@
 import {
+  GAME_SET_SETTINGS,
   GAME_CREATE,
   GAME_START,
   GAME_UPDATE_FLAGS,
@@ -19,6 +20,8 @@ const initialState = {
 
 export default function (state = initialState, action) {
   switch (action.type) {
+    case GAME_SET_SETTINGS:
+      return { ...state, size: action.payload }
     case GAME_CREATE:
       const { mines, board, size } = action.payload
       return { ...initialState, mines, board, size }

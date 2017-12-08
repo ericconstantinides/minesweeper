@@ -1,4 +1,5 @@
 import {
+  GAME_SET_SETTINGS,
   GAME_CREATE,
   GAME_START,
   GAME_UPDATE_FLAGS,
@@ -7,6 +8,15 @@ import {
   GAME_SWEEP
 } from './types'
 import * as gameFn from '../lib/gameFunctions'
+
+export function setGameSettings (width, height, numMines) {
+  const xMax = width - 1
+  const yMax = height - 1
+  return {
+    type: GAME_SET_SETTINGS,
+    payload: { width, height, xMax, yMax, numMines }
+  }
+}
 
 export function createGame (width = 9, height = 9, numMines = 10) {
   // turn the width and height into xMax yMax coords based off 0:

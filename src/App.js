@@ -26,7 +26,8 @@ class App extends Component {
     }
   }
   handleResetClick = () => {
-    this.props.createGame()
+    const {width, height, numMines} = this.props.game.size
+    this.props.createGame(width, height, numMines)
   }
   handleSquareMouseDown = coords => event => {
     const { status } = this.props.game
