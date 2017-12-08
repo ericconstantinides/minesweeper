@@ -8,7 +8,7 @@ import {
 } from './types'
 import * as gameFn from '../lib/gameFunctions'
 
-export function createGame (width = 9, height = 9, numMines = 10) {
+export function createGame (width = 25, height = 25, numMines = 25) {
   // turn the width and height into xMax yMax coords based off 0:
   const xMax = width - 1
   const yMax = height - 1
