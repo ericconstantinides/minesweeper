@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import * as actions from '../actions'
 
+import settings from '../config'
+
 class Modal extends Component {
   state = {
     width: this.props.game.settings.width,
@@ -20,50 +22,58 @@ class Modal extends Component {
     this.setState({ numMines: event.target.value })
   }
   updateMaxMines = () => {
-    const maxMines = Math.floor(this.state.width * this.state.height / 4)
+    const maxMines = Math.floor(
+      this.state.width * this.state.height / settings.maxMineRatio
+    )
     if (this.state.numMines > maxMines) {
-      this.setState({numMines: maxMines})
+      this.setState({ numMines: maxMines })
     }
   }
-  handleModalSettings = (width, height, numMines) => {
+  handleModalSettings = (settings) => {
     // console.log('hello')
-    this.setState({width, height, numMines})
+    this.setState(settings)
   }
   handleSaveSettings = event => {
     // I need to update the settings here:
     this.props.toggleUiModal(false)
-    this.props.createGame(this.state.width, this.state.height, this.state.numMines)
+    this.props.createGame(
+      this.state.width,
+      this.state.height,
+      this.state.numMines
+    )
   }
   render () {
     return (
       <div className='Modal' onClick={this.props.handleModalClick}>
         <div className='Modal__inner'>
           <h2>MineSweeper Game Settings</h2>
-          <button
-            onClick={() => this.handleModalSettings(9, 9, 10)}
-            className='modal__button'
-          >
-            Beginner
-          </button>
-          <button
-            onClick={() => this.handleModalSettings(16, 16, 40)}
-            className='modal__button'
-          >
-            Intermediate
-          </button>
-          <button
-            onClick={() => this.handleModalSettings(30, 16, 99)}
-            className='modal__button'
-          >
-            Expert
-          </button>
+          <article className='form__item'>
+            <button
+              onClick={() => this.handleModalSettings(settings.beginner)}
+              className='modal__button'
+            >
+              Beginner
+            </button>
+            <button
+              onClick={() => this.handleModalSettings(settings.intermediate)}
+              className='modal__button'
+            >
+              Intermediate
+            </button>
+            <button
+              onClick={() => this.handleModalSettings(settings.expert)}
+              className='modal__button'
+            >
+              Expert
+            </button>
+          </article>
           <article className='form__item'>
             <label className='form__label'>Width</label>
             <input
               className='form__input-slider'
               type='range'
-              min='6'
-              max='30'
+              min={settings.minWidth}
+              max={settings.maxWidth}
               value={this.state.width}
               step='1'
               id='width'
@@ -76,8 +86,8 @@ class Modal extends Component {
             <input
               className='form__input-slider'
               type='range'
-              min='6'
-              max='25'
+              min={settings.minHeight}
+              max={settings.maxHeight}
               value={this.state.height}
               step='1'
               id='height'
@@ -91,7 +101,7 @@ class Modal extends Component {
               className='form__input-slider'
               type='range'
               min='1'
-              max={Math.floor(this.state.width * this.state.height / 4)}
+              max={Math.floor(this.state.width * this.state.height / settings.maxMineRatio)}
               value={this.state.numMines}
               step='1'
               id='numMines'

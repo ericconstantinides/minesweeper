@@ -7,6 +7,7 @@ import {
   GAME_SWEEP
 } from './types'
 import * as gameFn from '../lib/gameFunctions'
+import defaultSettings from '../config'
 
 export function createGame (width, height, numMines) {
   const gameSettings = window.localStorage.getItem('gameSettings')
@@ -24,11 +25,11 @@ export function createGame (width, height, numMines) {
     }
   } else {
     settings = {
-      width: 9,
-      height: 9,
-      xMax: 8,
-      yMax: 8,
-      numMines: 10
+      width: defaultSettings.width,
+      height: defaultSettings.height,
+      xMax: defaultSettings.width - 1,
+      yMax: defaultSettings.height - 1,
+      numMines: defaultSettings.numMines
     }
   }
   // generate random mines:
