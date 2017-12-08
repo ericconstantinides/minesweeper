@@ -1,8 +1,8 @@
-import { UI_SHOW_MODAL } from './types'
+import { UI_TOGGLE_MODAL } from './types'
 
-export function showUiModal () {
+export function toggleUiModal (newModalActive) {
   return {
-    type: UI_SHOW_MODAL,
-    payload: null
+    type: UI_TOGGLE_MODAL,
+    payload: newModalActive
   }
 }

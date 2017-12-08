@@ -5,7 +5,7 @@ import FlagCounter from './components/FlagCounter'
 import ResetButton from './components/ResetButton'
 import Timer from './components/Timer'
 import Board from './components/Board'
-// import Modal from './components/Modal'
+import Modal from './components/Modal'
 
 import * as actions from './actions'
 
@@ -16,13 +16,13 @@ class App extends Component {
   componentDidMount () {
     this.props.createGame()
   }
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps (nextProps) {
     if (nextProps.game.status === 'won') {
-      this.setState({resetButtonClass: 'ResetButton--win'})
+      this.setState({ resetButtonClass: 'ResetButton--win' })
     } else if (nextProps.game.status === 'lost') {
-      this.setState({resetButtonClass: 'ResetButton--lost'})
+      this.setState({ resetButtonClass: 'ResetButton--lost' })
     } else {
-      this.setState({resetButtonClass: ''})
+      this.setState({ resetButtonClass: '' })
     }
   }
   handleResetClick = () => {
@@ -31,20 +31,26 @@ class App extends Component {
   handleSquareMouseDown = coords => event => {
     const { status } = this.props.game
     if (status !== 'playing' && status !== 'ready') return
-    this.setState({resetButtonClass: 'ResetButton--shocked'})
+    this.setState({ resetButtonClass: 'ResetButton--shocked' })
   }
   handleSquareMouseUp = coords => event => {
     const { status } = this.props.game
     if (status !== 'playing' && status !== 'ready') return
-    this.setState({resetButtonClass: ''})
+    this.setState({ resetButtonClass: '' })
   }
-  handleModalButtonClick = () => {
-    this.props.showUiModal()
+  handleModalClick = event => {
+    // don't close the modal if the outside modal is not what you clicked:
+    if (
+      event.currentTarget.className === 'Modal' &&
+      event.target.className !== 'Modal'
+    ) { return }
+    this.props.toggleUiModal(!this.props.ui.modalActive)
   }
   render () {
     let flagsAvailable = 0
     if (this.props.game.size.numMines) {
-      flagsAvailable = this.props.game.size.numMines - this.props.game.flagsRaised
+      flagsAvailable =
+        this.props.game.size.numMines - this.props.game.flagsRaised
     }
     return (
       <div className='App__container'>
@@ -62,14 +68,13 @@ class App extends Component {
             handleSquareMouseUp={this.handleSquareMouseUp}
           />
         </div>
-        {/* <div className='modal__button-container'>
-          <button onClick={this.handleModalButtonClick} className='modal__button'>
+        <div className='modal__button-container'>
+          <button onClick={this.handleModalClick} className='modal__button'>
             Game Settings
           </button>
         </div>
         {this.props.ui.modalActive &&
-          <Modal />
-        } */}
+          <Modal handleModalClick={this.handleModalClick} />}
       </div>
     )
   }

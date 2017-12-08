@@ -59,6 +59,7 @@ html [type=button] {
   bottom: 0;
   left: 0;
   background: rgba(0, 0, 0, 0.875);
+  font-family: Arial, Helvetica, sans-serif;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -91,6 +92,20 @@ html [type=button] {
     color: #fff;
     background-color: #0275d8;
     border-color: #0275d8; }
+
+/*
+ * Form
+ */
+.form__item {
+  margin-bottom: 1em; }
+  .form__item:last-child {
+    margin-bottom: 0; }
+
+.form__label {
+  display: block; }
+
+.form__input-slider {
+  width: 140px; }
 
 #root {
   display: flex; }

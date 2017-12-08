@@ -5,6 +5,7 @@
   bottom: 0;
   left: 0;
   background: rgba(black, 0.875);
+  font-family: Arial, Helvetica, sans-serif;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -44,4 +45,23 @@
     background-color: #0275d8;
     border-color: #0275d8;
   }
+}
+
+/*
+ * Form
+ */
+.form__item {
+  margin-bottom: 1em;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+.form__label {
+  display: block;
+}
+.form__input-slider {
+  width: 140px;
+}
+.form__output {
+
 }

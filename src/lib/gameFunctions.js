@@ -63,7 +63,6 @@ export function isMine (mines, { x, y }) {
   return false
 }
 
-
 export function sweepSquare (board, size, { x, y }) {
   // sweep the square:
   board[x][y].isSwept = true
