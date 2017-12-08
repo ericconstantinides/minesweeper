@@ -9,6 +9,7 @@
   width: 44px;
   padding: 0;
   @include button;
+  transition: 150ms;
   &:active {
     @include drop-section;
     .ResetButton__inner {

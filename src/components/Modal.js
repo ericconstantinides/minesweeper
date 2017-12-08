@@ -50,21 +50,21 @@ class Modal extends Component {
           <article className='form__item'>
             <button
               onClick={() => this.handleModalSettings(settings.beginner)}
-              className='modal__button'
+              className='modal__button no-border'
             >
-              Beginner
+              Set Beginner
             </button>
             <button
               onClick={() => this.handleModalSettings(settings.intermediate)}
-              className='modal__button'
+              className='modal__button no-border'
             >
-              Intermediate
+              Set Intermediate
             </button>
             <button
               onClick={() => this.handleModalSettings(settings.expert)}
-              className='modal__button'
+              className='modal__button no-border'
             >
-              Expert
+              Set Expert
             </button>
           </article>
           <article className='form__item'>
@@ -110,7 +110,10 @@ class Modal extends Component {
             <output className='form__output'>{this.state.numMines}</output>
           </article>
           <button onClick={this.handleSaveSettings} className='modal__button'>
-            Save Settings
+            Start New Game
+          </button>
+          <button onClick={this.props.handleModalClick} className='modal__button'>
+            Cancel
           </button>
         </div>
       </div>

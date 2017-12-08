@@ -23,3 +23,34 @@
     flex: 1 1 0;
   }
 }
+.App {
+  &:after {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: -1;
+  }
+}
+.App--won {
+  &:after {
+    content: '';
+    background: url(/images/confetti.gif) repeat;
+  }
+}
+.App--lost {
+  &:after {
+    content: '';
+    background: url(/images/muppet-blow-up.jpg) no-repeat;
+    background-size: cover;
+    background-position: center center;
+  }
+}
+.App--lost,
+.App--won {
+  .ResetButton {
+    transform: scale(2)
+  }
+}
