@@ -203,7 +203,7 @@ html [type=button] {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  transition: 100ms border; }
+  transition: 50ms border; }
   .Square.is-swept {
     border: 1px solid #7b7b7b;
     box-shadow: none; }
