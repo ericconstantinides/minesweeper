@@ -1,4 +1,3 @@
-export const GAME_SET_SETTINGS = 'GAME_SET_SETTINGS'
 export const GAME_CREATE = 'GAME_CREATE'
 export const GAME_START = 'GAME_START'
 export const GAME_UPDATE_FLAGS = 'GAME_UPDATE_FLAGS'

@@ -32,7 +32,7 @@ class Board extends Component {
   renderBoard () {
     if (!(this.props.game && this.props.game.board)) return
     let renderedBoard = []
-    const { board, size: { xMax, yMax } } = this.props.game
+    const { board, settings: { xMax, yMax } } = this.props.game
     for (let y = 0; y <= yMax; y++) {
       let row = []
       for (let x = 0; x <= xMax; x++) {

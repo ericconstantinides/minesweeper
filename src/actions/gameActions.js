@@ -1,5 +1,4 @@
 import {
-  GAME_SET_SETTINGS,
   GAME_CREATE,
   GAME_START,
   GAME_UPDATE_FLAGS,
@@ -9,27 +8,14 @@ import {
 } from './types'
 import * as gameFn from '../lib/gameFunctions'
 
-export function setGameSettings (width, height, numMines) {
-  return {
-    type: GAME_SET_SETTINGS,
-    payload: {
-      width: width * 1,
-      height: height * 1,
-      xMax: width - 1,
-      yMax: height - 1,
-      numMines: numMines * 1
-    }
-  }
-}
-
 export function createGame (width, height, numMines) {
-  const gameStorageSize = window.localStorage.getItem('gameSize')
-  let size = {}
-  if (!(width && height && numMines) && gameStorageSize) {
-    size = JSON.parse(gameStorageSize)
+  const gameSettings = window.localStorage.getItem('gameSettings')
+  let settings = {}
+  if (!(width && height && numMines) && gameSettings) {
+    settings = JSON.parse(gameSettings)
   } else if (width && height && numMines) {
     // turn the width and height into xMax yMax coords based off 0:
-    size = {
+    settings = {
       width: width * 1,
       height: height * 1,
       xMax: width - 1,
@@ -37,7 +23,7 @@ export function createGame (width, height, numMines) {
       numMines: numMines * 1
     }
   } else {
-    size = {
+    settings = {
       width: 9,
       height: 9,
       xMax: 8,
@@ -46,18 +32,18 @@ export function createGame (width, height, numMines) {
     }
   }
   // generate random mines:
-  const mines = gameFn.generateMines(size.xMax, size.yMax, size.numMines)
+  const mines = gameFn.generateMines(settings.xMax, settings.yMax, settings.numMines)
   // lay the mines on the board:
-  const board = gameFn.layMines(size.xMax, size.yMax, mines)
+  const board = gameFn.layMines(settings.xMax, settings.yMax, mines)
   // add the board helpers:
-  const boardReady = gameFn.addBoardHelpers(size.xMax, size.yMax, board)
+  const boardReady = gameFn.addBoardHelpers(settings.xMax, settings.yMax, board)
 
   // save the settings to webstorage:
-  window.localStorage.setItem('gameSize', JSON.stringify(size))
+  window.localStorage.setItem('gameSettings', JSON.stringify(settings))
   return {
     type: GAME_CREATE,
     payload: {
-      size,
+      settings,
       mines,
       board: boardReady
     }
@@ -65,7 +51,7 @@ export function createGame (width, height, numMines) {
 }
 
 export function clickSquare (game, { x, y }) {
-  const { board, mines, size } = game
+  const { board, mines, settings } = game
   // check if it's a mine:
   if (board[x][y].isMine) {
     // you lost so reveal all the mines:
@@ -78,12 +64,12 @@ export function clickSquare (game, { x, y }) {
     }
   }
   // square is not a mines so let's investigate nearby squares:
-  const sweptBoard = gameFn.sweepSquare(board, size, { x, y })
-  const squaresSwept = gameFn.countSwept(sweptBoard, size)
+  const sweptBoard = gameFn.sweepSquare(board, settings, { x, y })
+  const squaresSwept = gameFn.countSwept(sweptBoard, settings)
 
   // now let's check the status of our game:
   // if the squaresSwept + number of mines = all the squares:
-  if (squaresSwept + size.numMines === size.width * size.height) {
+  if (squaresSwept + settings.numMines === settings.width * settings.height) {
     // now let's cover all the mines with flags
 
     return {
@@ -91,7 +77,7 @@ export function clickSquare (game, { x, y }) {
       payload: {
         board: gameFn.updateMines(sweptBoard, mines, 'win'),
         squaresSwept,
-        flagsRaised: size.numMines
+        flagsRaised: settings.numMines
       }
     }
   }

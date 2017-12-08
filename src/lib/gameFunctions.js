@@ -63,7 +63,7 @@ export function isMine (mines, { x, y }) {
   return false
 }
 
-export function sweepSquare (board, size, { x, y }) {
+export function sweepSquare (board, settings, { x, y }) {
   // sweep the square:
   board[x][y].isSwept = true
   if (board[x][y].minesNearby > 0) {
@@ -72,14 +72,14 @@ export function sweepSquare (board, size, { x, y }) {
   for (let xChk = x - 1; xChk <= x + 1; xChk++) {
     for (let yChk = y - 1; yChk <= y + 1; yChk++) {
       if (
-        xChk <= size.xMax &&
+        xChk <= settings.xMax &&
         xChk >= 0 &&
-        yChk <= size.yMax &&
+        yChk <= settings.yMax &&
         yChk >= 0 &&
         !board[xChk][yChk].isSwept &&
         !board[xChk][yChk].isFlag
       ) {
-        board = sweepSquare(board, size, { x: xChk, y: yChk })
+        board = sweepSquare(board, settings, { x: xChk, y: yChk })
       }
     }
   }

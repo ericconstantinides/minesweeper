@@ -1,5 +1,4 @@
 import {
-  GAME_SET_SETTINGS,
   GAME_CREATE,
   GAME_START,
   GAME_UPDATE_FLAGS,
@@ -11,7 +10,7 @@ import {
 const initialState = {
   mines: {},
   board: [],
-  size: {},
+  settings: {},
   squaresSwept: 0,
   flagsRaised: 0,
   explosionCoords: false,
@@ -20,11 +19,9 @@ const initialState = {
 
 export default function (state = initialState, action) {
   switch (action.type) {
-    case GAME_SET_SETTINGS:
-      return { ...state, size: action.payload }
     case GAME_CREATE:
-      const { mines, board, size } = action.payload
-      return { ...initialState, mines, board, size }
+      const { mines, board, settings } = action.payload
+      return { ...initialState, mines, board, settings }
     case GAME_START:
       return { ...state, status: 'playing' }
     case GAME_UPDATE_FLAGS:

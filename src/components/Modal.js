@@ -4,9 +4,9 @@ import * as actions from '../actions'
 
 class Modal extends Component {
   state = {
-    width: this.props.game.size.width,
-    height: this.props.game.size.height,
-    numMines: this.props.game.size.numMines
+    width: this.props.game.settings.width,
+    height: this.props.game.settings.height,
+    numMines: this.props.game.settings.numMines
   }
   handleWidthChange = event => {
     this.setState({ width: event.target.value })
@@ -20,7 +20,7 @@ class Modal extends Component {
     this.setState({ numMines: event.target.value })
   }
   updateMaxMines = () => {
-    const maxMines = Math.floor(this.state.width * this.state.height / 2)
+    const maxMines = Math.floor(this.state.width * this.state.height / 4)
     if (this.state.numMines > maxMines) {
       this.setState({numMines: maxMines})
     }
@@ -63,7 +63,7 @@ class Modal extends Component {
               className='form__input-slider'
               type='range'
               min='6'
-              max='40'
+              max='30'
               value={this.state.width}
               step='1'
               id='width'
@@ -77,7 +77,7 @@ class Modal extends Component {
               className='form__input-slider'
               type='range'
               min='6'
-              max='40'
+              max='25'
               value={this.state.height}
               step='1'
               id='height'
@@ -91,7 +91,7 @@ class Modal extends Component {
               className='form__input-slider'
               type='range'
               min='1'
-              max={Math.floor(this.state.width * this.state.height / 2)}
+              max={Math.floor(this.state.width * this.state.height / 4)}
               value={this.state.numMines}
               step='1'
               id='numMines'

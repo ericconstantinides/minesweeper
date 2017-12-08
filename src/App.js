@@ -26,7 +26,7 @@ class App extends Component {
     }
   }
   handleResetClick = () => {
-    const { width, height, numMines } = this.props.game.size
+    const { width, height, numMines } = this.props.game.settings
     this.props.createGame(width, height, numMines)
   }
   handleSquareMouseDown = coords => event => {
@@ -63,9 +63,9 @@ class App extends Component {
   }
   render () {
     let flagsAvailable = 0
-    if (this.props.game.size.numMines) {
+    if (this.props.game.settings.numMines) {
       flagsAvailable =
-        this.props.game.size.numMines - this.props.game.flagsRaised
+        this.props.game.settings.numMines - this.props.game.flagsRaised
     }
     return (
       <div className='App__container'>
