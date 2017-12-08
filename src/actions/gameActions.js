@@ -9,6 +9,15 @@ import {
 import * as gameFn from '../lib/gameFunctions'
 import defaultSettings from '../config'
 
+/**
+ * Creates a new game
+ *
+ * @export
+ * @param {number} width - the width of the board to create
+ * @param {number} height - the height of the board to create
+ * @param {number} numMines - the number of mines to lay
+ * @returns {object} - a redux object with the game set
+ */
 export function createGame (width, height, numMines) {
   const gameSettings = window.localStorage.getItem('gameSettings')
   let settings = {}
@@ -51,6 +60,16 @@ export function createGame (width, height, numMines) {
   }
 }
 
+/**
+ * The function that fires when a square is clicked on the board
+ *
+ * @export
+ * @param {object} game - contains the entire game and settings
+ * @param {object} coords - the x and y coords of the clicked square
+ * @returns {object} GAME_WIN
+ * @returns {object} GAME_LOSE
+ * @returns {object} GAME_SWEEP
+ */
 export function clickSquare (game, { x, y }) {
   const { board, mines, settings } = game
   // check if it's a mine:
@@ -90,14 +109,26 @@ export function clickSquare (game, { x, y }) {
     }
   }
 }
-
+/**
+ * Starts the game
+ *
+ * @export
+ * @returns {object} - GAME_START
+ */
 export function startGame () {
   return {
     type: GAME_START,
     action: null
   }
 }
-
+/**
+ * Toggles the flag on a square and increments or decremetns the flagsRaised
+ *
+ * @export
+ * @param {object} game - contains board and flagsRaised
+ * @param {object} coords - the x y coords of the square to update
+ * @returns {object} - GAME_UPDATE_FLAGS
+ */
 export function toggleFlag ({ board, flagsRaised }, { x, y }) {
   // toggle the flag:
   board[x][y].isFlag = !board[x][y].isFlag

@@ -59,7 +59,7 @@ class App extends Component {
     ) {
       return
     }
-    this.props.toggleUiModal(!this.props.ui.modalActive)
+    this.props.showUiModal(!this.props.ui.modalActive)
   }
   render () {
     let flagsAvailable = 0

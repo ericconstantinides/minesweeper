@@ -35,7 +35,7 @@ class Modal extends Component {
   }
   handleSaveSettings = event => {
     // I need to update the settings here:
-    this.props.toggleUiModal(false)
+    this.props.showUiModal(false)
     this.props.createGame(
       this.state.width,
       this.state.height,
