@@ -26,17 +26,29 @@ class App extends Component {
     }
   }
   handleResetClick = () => {
-    const {width, height, numMines} = this.props.game.size
+    const { width, height, numMines } = this.props.game.size
     this.props.createGame(width, height, numMines)
   }
   handleSquareMouseDown = coords => event => {
-    const { status } = this.props.game
-    if (status !== 'playing' && status !== 'ready') return
+    const { status, board } = this.props.game
+    if (
+      board[coords.x][coords.y].isSwept ||
+      board[coords.x][coords.y].isFlag ||
+      (status !== 'playing' && status !== 'ready')
+    ) {
+      return
+    }
     this.setState({ resetButtonClass: 'ResetButton--shocked' })
   }
   handleSquareMouseUp = coords => event => {
-    const { status } = this.props.game
-    if (status !== 'playing' && status !== 'ready') return
+    const { status, board } = this.props.game
+    if (
+      board[coords.x][coords.y].isSwept ||
+      board[coords.x][coords.y].isFlag ||
+      (status !== 'playing' && status !== 'ready')
+    ) {
+      return
+    }
     this.setState({ resetButtonClass: '' })
   }
   handleModalClick = event => {
@@ -44,7 +56,9 @@ class App extends Component {
     if (
       event.currentTarget.className === 'Modal' &&
       event.target.className !== 'Modal'
-    ) { return }
+    ) {
+      return
+    }
     this.props.toggleUiModal(!this.props.ui.modalActive)
   }
   render () {
