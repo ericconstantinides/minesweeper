@@ -2,6 +2,7 @@
   @include button;
   width: 32px;
   height: 32px;
+  position: relative;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -10,9 +11,28 @@
   &.is-swept {
     border: 1px solid #7b7b7b;
     box-shadow: none;
+    &:after {
+      background: transparent;
+      transition-duration: 150ms;
+    }
   }
   &.not-swept:active {
     @include drop-section;
+  }
+  $delay: 55ms;
+  @for $i from 1 through 60 { // can cover 60 squares
+    &.has-delay-#{$i}, &.has-delay-#{$i}:after{
+      transition-delay: $delay * $i;
+    }
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: #bdbdbd;
   }
 }
 .Square__inner {
@@ -28,6 +48,10 @@
   .Square.is-exploding & {
     background-image: url(/images/icon-collision-symbol.png), url(/images/icon-bomb.png);
   }
+}
+.Square.is-flag:after {
+  background: transparent;
+  transition: 150ms;
 }
 .Square.is-exploding {
   background-color: #f20d1b;

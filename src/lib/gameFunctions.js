@@ -40,7 +40,8 @@ export function layMines (xMax, yMax, mines) {
       column.push({
         isMine: isMine(mines, { x, y }),
         isSwept: false,
-        isFlag: false
+        isFlag: false,
+        sweepDelay: 0
       })
     }
     board.push(column)
@@ -112,9 +113,11 @@ export function isMine (mines, { x, y }) {
  * @param {object} coords - x and y coords of the square to check
  * @returns {array} board
  */
-export function sweepSquare (board, settings, { x, y }) {
+export function sweepSquare (board, settings, { x, y }, clicked) {
   // sweep the square:
   board[x][y].isSwept = true
+  // now figure out the revealDelay:
+  board[x][y].sweepDelay = getSweepDelay({x, y}, clicked)
   if (board[x][y].minesNearby > 0) {
     return board
   }
@@ -130,12 +133,29 @@ export function sweepSquare (board, settings, { x, y }) {
         !board[xChk][yChk].isFlag
       ) {
         // call sweepSquare again
-        board = sweepSquare(board, settings, { x: xChk, y: yChk })
+        board = sweepSquare(board, settings, { x: xChk, y: yChk }, clicked)
       }
     }
   }
   return board
 }
+/**
+ * Returns how far this square is from the clicked square.
+ * Used for a delay when revealing the squares.
+ *
+ * @param {object} thisSquare - the coords or the square being examined
+ * @param {object} clickedSquare - the coords of the square taht was clicked
+ * @returns {number} the distance the square is away from the clicked square
+ */
+function getSweepDelay (thisSquare, clickedSquare) {
+  const xDiff = Math.abs(clickedSquare.x - thisSquare.x)
+  const yDiff = Math.abs(clickedSquare.y - thisSquare.y)
+  if (xDiff >= yDiff) {
+    return xDiff
+  }
+  return yDiff
+}
+
 /**
  * Counts the number squares that have "isSwept"
  *

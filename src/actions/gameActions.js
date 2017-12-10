@@ -42,7 +42,11 @@ export function createGame (width, height, numMines) {
     }
   }
   // generate random mines:
-  const mines = gameFn.generateMines(settings.xMax, settings.yMax, settings.numMines)
+  const mines = gameFn.generateMines(
+    settings.xMax,
+    settings.yMax,
+    settings.numMines
+  )
   // lay the mines on the board:
   const board = gameFn.layMines(settings.xMax, settings.yMax, mines)
   // add the board helpers:
@@ -83,8 +87,8 @@ export function clickSquare (game, { x, y }) {
       }
     }
   }
-  // square is not a mines so let's investigate nearby squares:
-  const sweptBoard = gameFn.sweepSquare(board, settings, { x, y })
+  // square is not a mine so let's investigate nearby squares:
+  const sweptBoard = gameFn.sweepSquare(board, settings, { x, y }, { x, y })
   const squaresSwept = gameFn.countSwept(sweptBoard, settings)
 
   // now let's check the status of our game:

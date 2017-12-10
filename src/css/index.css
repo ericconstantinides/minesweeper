@@ -240,6 +240,7 @@ html [type=button] {
   border-radius: 0;
   width: 32px;
   height: 32px;
+  position: relative;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -248,12 +249,143 @@ html [type=button] {
   .Square.is-swept {
     border: 1px solid #7b7b7b;
     box-shadow: none; }
+    .Square.is-swept:after {
+      background: transparent;
+      transition-duration: 150ms; }
   .Square.not-swept:active {
     background: #bdbdbd;
     border-top: 4px solid #7b7b7b;
     border-left: 4px solid #7b7b7b;
     border-right: 4px solid #ffffff;
     border-bottom: 4px solid #ffffff; }
+  .Square.has-delay-1, .Square.has-delay-1:after {
+    transition-delay: 55ms; }
+  .Square.has-delay-2, .Square.has-delay-2:after {
+    transition-delay: 110ms; }
+  .Square.has-delay-3, .Square.has-delay-3:after {
+    transition-delay: 165ms; }
+  .Square.has-delay-4, .Square.has-delay-4:after {
+    transition-delay: 220ms; }
+  .Square.has-delay-5, .Square.has-delay-5:after {
+    transition-delay: 275ms; }
+  .Square.has-delay-6, .Square.has-delay-6:after {
+    transition-delay: 330ms; }
+  .Square.has-delay-7, .Square.has-delay-7:after {
+    transition-delay: 385ms; }
+  .Square.has-delay-8, .Square.has-delay-8:after {
+    transition-delay: 440ms; }
+  .Square.has-delay-9, .Square.has-delay-9:after {
+    transition-delay: 495ms; }
+  .Square.has-delay-10, .Square.has-delay-10:after {
+    transition-delay: 550ms; }
+  .Square.has-delay-11, .Square.has-delay-11:after {
+    transition-delay: 605ms; }
+  .Square.has-delay-12, .Square.has-delay-12:after {
+    transition-delay: 660ms; }
+  .Square.has-delay-13, .Square.has-delay-13:after {
+    transition-delay: 715ms; }
+  .Square.has-delay-14, .Square.has-delay-14:after {
+    transition-delay: 770ms; }
+  .Square.has-delay-15, .Square.has-delay-15:after {
+    transition-delay: 825ms; }
+  .Square.has-delay-16, .Square.has-delay-16:after {
+    transition-delay: 880ms; }
+  .Square.has-delay-17, .Square.has-delay-17:after {
+    transition-delay: 935ms; }
+  .Square.has-delay-18, .Square.has-delay-18:after {
+    transition-delay: 990ms; }
+  .Square.has-delay-19, .Square.has-delay-19:after {
+    transition-delay: 1045ms; }
+  .Square.has-delay-20, .Square.has-delay-20:after {
+    transition-delay: 1100ms; }
+  .Square.has-delay-21, .Square.has-delay-21:after {
+    transition-delay: 1155ms; }
+  .Square.has-delay-22, .Square.has-delay-22:after {
+    transition-delay: 1210ms; }
+  .Square.has-delay-23, .Square.has-delay-23:after {
+    transition-delay: 1265ms; }
+  .Square.has-delay-24, .Square.has-delay-24:after {
+    transition-delay: 1320ms; }
+  .Square.has-delay-25, .Square.has-delay-25:after {
+    transition-delay: 1375ms; }
+  .Square.has-delay-26, .Square.has-delay-26:after {
+    transition-delay: 1430ms; }
+  .Square.has-delay-27, .Square.has-delay-27:after {
+    transition-delay: 1485ms; }
+  .Square.has-delay-28, .Square.has-delay-28:after {
+    transition-delay: 1540ms; }
+  .Square.has-delay-29, .Square.has-delay-29:after {
+    transition-delay: 1595ms; }
+  .Square.has-delay-30, .Square.has-delay-30:after {
+    transition-delay: 1650ms; }
+  .Square.has-delay-31, .Square.has-delay-31:after {
+    transition-delay: 1705ms; }
+  .Square.has-delay-32, .Square.has-delay-32:after {
+    transition-delay: 1760ms; }
+  .Square.has-delay-33, .Square.has-delay-33:after {
+    transition-delay: 1815ms; }
+  .Square.has-delay-34, .Square.has-delay-34:after {
+    transition-delay: 1870ms; }
+  .Square.has-delay-35, .Square.has-delay-35:after {
+    transition-delay: 1925ms; }
+  .Square.has-delay-36, .Square.has-delay-36:after {
+    transition-delay: 1980ms; }
+  .Square.has-delay-37, .Square.has-delay-37:after {
+    transition-delay: 2035ms; }
+  .Square.has-delay-38, .Square.has-delay-38:after {
+    transition-delay: 2090ms; }
+  .Square.has-delay-39, .Square.has-delay-39:after {
+    transition-delay: 2145ms; }
+  .Square.has-delay-40, .Square.has-delay-40:after {
+    transition-delay: 2200ms; }
+  .Square.has-delay-41, .Square.has-delay-41:after {
+    transition-delay: 2255ms; }
+  .Square.has-delay-42, .Square.has-delay-42:after {
+    transition-delay: 2310ms; }
+  .Square.has-delay-43, .Square.has-delay-43:after {
+    transition-delay: 2365ms; }
+  .Square.has-delay-44, .Square.has-delay-44:after {
+    transition-delay: 2420ms; }
+  .Square.has-delay-45, .Square.has-delay-45:after {
+    transition-delay: 2475ms; }
+  .Square.has-delay-46, .Square.has-delay-46:after {
+    transition-delay: 2530ms; }
+  .Square.has-delay-47, .Square.has-delay-47:after {
+    transition-delay: 2585ms; }
+  .Square.has-delay-48, .Square.has-delay-48:after {
+    transition-delay: 2640ms; }
+  .Square.has-delay-49, .Square.has-delay-49:after {
+    transition-delay: 2695ms; }
+  .Square.has-delay-50, .Square.has-delay-50:after {
+    transition-delay: 2750ms; }
+  .Square.has-delay-51, .Square.has-delay-51:after {
+    transition-delay: 2805ms; }
+  .Square.has-delay-52, .Square.has-delay-52:after {
+    transition-delay: 2860ms; }
+  .Square.has-delay-53, .Square.has-delay-53:after {
+    transition-delay: 2915ms; }
+  .Square.has-delay-54, .Square.has-delay-54:after {
+    transition-delay: 2970ms; }
+  .Square.has-delay-55, .Square.has-delay-55:after {
+    transition-delay: 3025ms; }
+  .Square.has-delay-56, .Square.has-delay-56:after {
+    transition-delay: 3080ms; }
+  .Square.has-delay-57, .Square.has-delay-57:after {
+    transition-delay: 3135ms; }
+  .Square.has-delay-58, .Square.has-delay-58:after {
+    transition-delay: 3190ms; }
+  .Square.has-delay-59, .Square.has-delay-59:after {
+    transition-delay: 3245ms; }
+  .Square.has-delay-60, .Square.has-delay-60:after {
+    transition-delay: 3300ms; }
+  .Square:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: #bdbdbd; }
 
 .Square__inner {
   width: 20px;
@@ -265,6 +397,10 @@ html [type=button] {
     background-image: url(/images/icon-triangular-flag-on-post.png); }
   .Square.is-exploding .Square__inner {
     background-image: url(/images/icon-collision-symbol.png), url(/images/icon-bomb.png); }
+
+.Square.is-flag:after {
+  background: transparent;
+  transition: 150ms; }
 
 .Square.is-exploding {
   background-color: #f20d1b; }

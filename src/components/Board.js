@@ -39,6 +39,7 @@ class Board extends Component {
         row.push(
           <Square
             swept={board[x][y].isSwept}
+            sweepDelay={board[x][y].sweepDelay}
             handleSquareClick={this.handleSquareClick}
             handleSquareRightClick={this.handleSquareRightClick}
             handleSquareMouseDown={this.props.handleSquareMouseDown}
