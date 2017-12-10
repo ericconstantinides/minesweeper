@@ -19,7 +19,6 @@ class Board extends Component {
       this.props.startGame()
     }
     const { x, y } = coords
-    console.log({ x, y })
     this.props.clickSquare(this.props.game, coords)
   }
   handleSquareRightClick = coords => event => {

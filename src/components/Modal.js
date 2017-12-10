@@ -30,7 +30,6 @@ class Modal extends Component {
     }
   }
   handleModalSettings = (settings) => {
-    // console.log('hello')
     this.setState(settings)
   }
   handleSaveSettings = event => {
