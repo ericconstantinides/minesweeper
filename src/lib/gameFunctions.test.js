@@ -1,17 +1,5 @@
 import * as gameFn from './gameFunctions'
 
-const TEST_MINES = [
-  { x: 1, y: 7 },
-  { x: 9, y: 9 },
-  { x: 5, y: 7 },
-  { x: 2, y: 2 },
-  { x: 5, y: 5 },
-  { x: 9, y: 8 },
-  { x: 1, y: 4 },
-  { x: 3, y: 1 },
-  { x: 4, y: 7 },
-  { x: 2, y: 8 }
-]
 describe('game functions', () => {
   it('should generate 10 mines', () => {
     const NUM_MINES = 10
