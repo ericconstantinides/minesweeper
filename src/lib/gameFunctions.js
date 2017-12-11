@@ -150,10 +150,7 @@ export function sweepSquare (board, settings, { x, y }, clicked) {
 function getSweepDelay (thisSquare, clickedSquare) {
   const xDiff = Math.abs(clickedSquare.x - thisSquare.x)
   const yDiff = Math.abs(clickedSquare.y - thisSquare.y)
-  if (xDiff >= yDiff) {
-    return xDiff
-  }
-  return yDiff
+  return Math.max(xDiff, yDiff)
 }
 
 /**
