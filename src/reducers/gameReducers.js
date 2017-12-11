@@ -1,3 +1,4 @@
+import _ from 'lodash'
 import {
   GAME_CREATE,
   GAME_START,
@@ -21,20 +22,20 @@ export default function (state = initialState, action) {
   switch (action.type) {
     case GAME_CREATE:
       const { mines, board, settings } = action.payload
-      return { ...initialState, mines, board, settings }
+      return { ...initialState, mines: { ...mines }, board, settings }
     case GAME_START:
       return { ...state, status: 'playing' }
     case GAME_UPDATE_FLAGS:
       return {
         ...state,
-        board: action.payload.board,
+        board: _.cloneDeep(action.payload.board),
         flagsRaised: action.payload.flagsRaised
       }
     case GAME_WIN:
       return {
         ...state,
         status: 'won',
-        board: action.payload.board,
+        board: _.cloneDeep(action.payload.board),
         squaresSwept: action.payload.squaresSwept,
         flagsRaised: action.payload.flagsRaised
       }
@@ -43,12 +44,16 @@ export default function (state = initialState, action) {
       return {
         ...state,
         status: 'lost',
-        board: action.payload.board,
+        board: _.cloneDeep(action.payload.board),
         explosionCoords
       }
     case GAME_SWEEP:
       const { sweptBoard, squaresSwept } = action.payload
-      return { ...state, board: sweptBoard, squaresSwept }
+      return {
+        ...state,
+        board: _.cloneDeep(sweptBoard),
+        squaresSwept
+      }
     default:
   }
   return state
