@@ -6,6 +6,7 @@ import ResetButton from './components/ResetButton'
 import Timer from './components/Timer'
 import Board from './components/Board'
 import Modal from './components/Modal'
+import Instructions from './components/Instructions'
 
 import * as actions from './actions'
 
@@ -88,6 +89,7 @@ class App extends Component {
             Game Settings
           </button>
         </div>
+        <Instructions />
         {this.props.ui.modalActive &&
           <Modal handleModalClick={this.handleModalClick} />}
       </div>

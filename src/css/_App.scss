@@ -4,11 +4,13 @@
 .App__container {
   display: flex;
   flex-flow: column;
+  padding: 0.5em;
   margin: 0 auto;
 }
 .App {
   background: #bdbdbd;
   padding: 1em;
+  margin: 0 auto;
 }
 .App__header {
   display: flex;
