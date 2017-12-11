@@ -5,10 +5,13 @@ import * as actions from '../actions'
 import settings from '../config'
 
 class Modal extends Component {
-  state = {
-    width: this.props.game.settings.width,
-    height: this.props.game.settings.height,
-    numMines: this.props.game.settings.numMines
+  constructor (props) {
+    super(props)
+    this.state = {
+      width: this.props.game.settings.width,
+      height: this.props.game.settings.height,
+      numMines: this.props.game.settings.numMines
+    }
   }
   handleWidthChange = event => {
     this.setState({ width: event.target.value })

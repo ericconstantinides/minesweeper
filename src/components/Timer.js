@@ -2,9 +2,12 @@ import React, { Component } from 'react'
 import { padString } from '../lib/helperFunctions'
 
 class Timer extends Component {
-  state = {
-    timer: null,
-    counter: 0
+  constructor (props) {
+    super(props)
+    this.state = {
+      timer: null,
+      counter: 0
+    }
   }
   componentDidUpdate(prevProps, prevState) {
     // start the timer (we start the timer at 1 second instead of 0 seconds):
