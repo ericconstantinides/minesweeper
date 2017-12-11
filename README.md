@@ -15,14 +15,16 @@ npm run start
 Programmatically,  the game came down to 2 distinct areas: Building the board and sweeping the board.
 
 ## Building the Board
-The board is built in coordinates, so every square on the board can be accessed by `{x, y}` coordinates. Building the board comes down to: 1) generating random coordinates for mines, 2) creating a board with the mines with each square having unique properties (`isMine, isSwept, isFlag, sweepDelay`), and 3) traversing the board to add `minesNearby` properties.
+The board is built in coordinates, so every square on the board can be accessed by `{x, y}` coordinates. Building the board comes down to: 1) generating random coordinates for mines, 2) creating a board with the mines with each square having unique properties (`isMine, isSwept, isFlag, sweepDelay`), and 3) traversing the board by checking each square's adjacent mines and adding it to the `minesNearby` property.
 
 ## Sweeping the board (aka Playing the game)
-To start the game, you click on a square. If the square is a mine, you lose. Otherwise, the game executes `sweepSquare()` which checks if the square has any nearbyMines. If not, it recursively checks the surrounding squares (up to 8 depending on your positioning on the board) and recursively calls `sweepSquare` if the swept square has zero `minesNearby`.
+To start the game, you click on a square. If the square is a mine, you lose. If you didn't lose, the game executes `sweepSquare()` which checks if the square has any nearbyMines. If not, it recursively checks the surrounding squares (up to 8 depending on your positioning on the board) and recursively calls `sweepSquare` if that square has zero `minesNearby`.
 
-After all the possible squares are swept, the game checks if you've won: (`squaresSwept + number of mines === width * height`). If you've won or lost, the game ends with a fun background. Otherwise, you keep on playing.
+After all the possible squares are swept, the game checks if you've won: (`squaresSwept + number of mines === board width * board height`).
 
-To animate the unveiling of the squares, `sweepSquare` adds a `sweepDelay` depending on how far each square is away from the clicked square. The delay is determined by the larger of either the x distance or the y distance from the clicked square. When React updates the board after the sweep is over, a CSS delay-class is added to generate this delay.
+If you've won (or lost), the game ends with a fun background. Otherwise, you keep on playing.
+
+To animate the unveiling of the squares, `sweepSquare` adds a `sweepDelay`. The delay is determined by the distance (the larger of either the x distance or the y distance) from the clicked square. When React updates the board after the sweep is over, a CSS delay-class is added to each revealed square to generate this delay.
 
 The game's timer starts when the game starts and stops when the game wins or loses. The `Timer` state is not saved in Redux.
 
