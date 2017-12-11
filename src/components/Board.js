@@ -7,6 +7,7 @@ class Board extends Component {
   handleSquareClick = coords => event => {
     event.preventDefault()
     const { status, board } = this.props.game
+    // ignore click if square is swept, flagged, or (Not Playing and Not Ready)
     if (
       board[coords.x][coords.y].isSwept ||
       board[coords.x][coords.y].isFlag ||
@@ -23,8 +24,12 @@ class Board extends Component {
   handleSquareRightClick = coords => event => {
     event.preventDefault()
     const { status, board } = this.props.game
-    if (board[coords.x][coords.y].isSwept) return
-    if (status !== 'playing' && status !== 'ready') return
+    if (
+      board[coords.x][coords.y].isSwept ||
+      (status !== 'playing' && status !== 'ready')
+    ) {
+      return
+    }
     this.props.toggleFlag(this.props.game, coords)
   }
   renderBoard () {
@@ -46,7 +51,7 @@ class Board extends Component {
             flag={board[x][y].isFlag}
             explosionCoords={this.props.game.explosionCoords}
             minesNearby={board[x][y].minesNearby}
-            key={x.toString() + ',' + y.toString()}
+            key={x + ',' + y}
             x={x}
             y={y}
           />

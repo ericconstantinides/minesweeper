@@ -69,7 +69,7 @@ export function addBoardHelpers (xMax, yMax, board) {
 }
 /**
  * Checks all the 8 nearby squares, adding up the number of mines
- * 
+ *
  * @export
  * @param {array} board
  * @param {object} coords - x and y coords of the square to check
