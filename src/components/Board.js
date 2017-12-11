@@ -49,7 +49,7 @@ class Board extends Component {
             handleSquareMouseUp={this.props.handleSquareMouseUp}
             mine={board[x][y].isMine}
             flag={board[x][y].isFlag}
-            explosionCoords={this.props.game.explosionCoords}
+            xpldCoords={this.props.game.explosionCoords}
             minesNearby={board[x][y].minesNearby}
             key={x + ',' + y}
             x={x}
