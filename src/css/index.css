@@ -264,125 +264,125 @@ body {
     border-right: 4px solid #ffffff;
     border-bottom: 4px solid #ffffff; }
   .Square.has-delay-1, .Square.has-delay-1:after {
-    transition-delay: 55ms; }
+    transition-delay: 50ms; }
   .Square.has-delay-2, .Square.has-delay-2:after {
-    transition-delay: 110ms; }
+    transition-delay: 100ms; }
   .Square.has-delay-3, .Square.has-delay-3:after {
-    transition-delay: 165ms; }
+    transition-delay: 150ms; }
   .Square.has-delay-4, .Square.has-delay-4:after {
-    transition-delay: 220ms; }
+    transition-delay: 200ms; }
   .Square.has-delay-5, .Square.has-delay-5:after {
-    transition-delay: 275ms; }
+    transition-delay: 250ms; }
   .Square.has-delay-6, .Square.has-delay-6:after {
-    transition-delay: 330ms; }
+    transition-delay: 300ms; }
   .Square.has-delay-7, .Square.has-delay-7:after {
-    transition-delay: 385ms; }
+    transition-delay: 350ms; }
   .Square.has-delay-8, .Square.has-delay-8:after {
-    transition-delay: 440ms; }
+    transition-delay: 400ms; }
   .Square.has-delay-9, .Square.has-delay-9:after {
-    transition-delay: 495ms; }
+    transition-delay: 450ms; }
   .Square.has-delay-10, .Square.has-delay-10:after {
-    transition-delay: 550ms; }
+    transition-delay: 500ms; }
   .Square.has-delay-11, .Square.has-delay-11:after {
-    transition-delay: 605ms; }
+    transition-delay: 550ms; }
   .Square.has-delay-12, .Square.has-delay-12:after {
-    transition-delay: 660ms; }
+    transition-delay: 600ms; }
   .Square.has-delay-13, .Square.has-delay-13:after {
-    transition-delay: 715ms; }
+    transition-delay: 650ms; }
   .Square.has-delay-14, .Square.has-delay-14:after {
-    transition-delay: 770ms; }
+    transition-delay: 700ms; }
   .Square.has-delay-15, .Square.has-delay-15:after {
-    transition-delay: 825ms; }
+    transition-delay: 750ms; }
   .Square.has-delay-16, .Square.has-delay-16:after {
-    transition-delay: 880ms; }
+    transition-delay: 800ms; }
   .Square.has-delay-17, .Square.has-delay-17:after {
-    transition-delay: 935ms; }
+    transition-delay: 850ms; }
   .Square.has-delay-18, .Square.has-delay-18:after {
-    transition-delay: 990ms; }
+    transition-delay: 900ms; }
   .Square.has-delay-19, .Square.has-delay-19:after {
-    transition-delay: 1045ms; }
+    transition-delay: 950ms; }
   .Square.has-delay-20, .Square.has-delay-20:after {
-    transition-delay: 1100ms; }
+    transition-delay: 1000ms; }
   .Square.has-delay-21, .Square.has-delay-21:after {
-    transition-delay: 1155ms; }
+    transition-delay: 1050ms; }
   .Square.has-delay-22, .Square.has-delay-22:after {
-    transition-delay: 1210ms; }
+    transition-delay: 1100ms; }
   .Square.has-delay-23, .Square.has-delay-23:after {
-    transition-delay: 1265ms; }
+    transition-delay: 1150ms; }
   .Square.has-delay-24, .Square.has-delay-24:after {
-    transition-delay: 1320ms; }
+    transition-delay: 1200ms; }
   .Square.has-delay-25, .Square.has-delay-25:after {
-    transition-delay: 1375ms; }
+    transition-delay: 1250ms; }
   .Square.has-delay-26, .Square.has-delay-26:after {
-    transition-delay: 1430ms; }
+    transition-delay: 1300ms; }
   .Square.has-delay-27, .Square.has-delay-27:after {
-    transition-delay: 1485ms; }
+    transition-delay: 1350ms; }
   .Square.has-delay-28, .Square.has-delay-28:after {
-    transition-delay: 1540ms; }
+    transition-delay: 1400ms; }
   .Square.has-delay-29, .Square.has-delay-29:after {
-    transition-delay: 1595ms; }
+    transition-delay: 1450ms; }
   .Square.has-delay-30, .Square.has-delay-30:after {
-    transition-delay: 1650ms; }
+    transition-delay: 1500ms; }
   .Square.has-delay-31, .Square.has-delay-31:after {
-    transition-delay: 1705ms; }
+    transition-delay: 1550ms; }
   .Square.has-delay-32, .Square.has-delay-32:after {
-    transition-delay: 1760ms; }
+    transition-delay: 1600ms; }
   .Square.has-delay-33, .Square.has-delay-33:after {
-    transition-delay: 1815ms; }
+    transition-delay: 1650ms; }
   .Square.has-delay-34, .Square.has-delay-34:after {
-    transition-delay: 1870ms; }
+    transition-delay: 1700ms; }
   .Square.has-delay-35, .Square.has-delay-35:after {
-    transition-delay: 1925ms; }
+    transition-delay: 1750ms; }
   .Square.has-delay-36, .Square.has-delay-36:after {
-    transition-delay: 1980ms; }
+    transition-delay: 1800ms; }
   .Square.has-delay-37, .Square.has-delay-37:after {
-    transition-delay: 2035ms; }
+    transition-delay: 1850ms; }
   .Square.has-delay-38, .Square.has-delay-38:after {
-    transition-delay: 2090ms; }
+    transition-delay: 1900ms; }
   .Square.has-delay-39, .Square.has-delay-39:after {
-    transition-delay: 2145ms; }
+    transition-delay: 1950ms; }
   .Square.has-delay-40, .Square.has-delay-40:after {
-    transition-delay: 2200ms; }
+    transition-delay: 2000ms; }
   .Square.has-delay-41, .Square.has-delay-41:after {
-    transition-delay: 2255ms; }
+    transition-delay: 2050ms; }
   .Square.has-delay-42, .Square.has-delay-42:after {
-    transition-delay: 2310ms; }
+    transition-delay: 2100ms; }
   .Square.has-delay-43, .Square.has-delay-43:after {
-    transition-delay: 2365ms; }
+    transition-delay: 2150ms; }
   .Square.has-delay-44, .Square.has-delay-44:after {
-    transition-delay: 2420ms; }
+    transition-delay: 2200ms; }
   .Square.has-delay-45, .Square.has-delay-45:after {
-    transition-delay: 2475ms; }
+    transition-delay: 2250ms; }
   .Square.has-delay-46, .Square.has-delay-46:after {
-    transition-delay: 2530ms; }
+    transition-delay: 2300ms; }
   .Square.has-delay-47, .Square.has-delay-47:after {
-    transition-delay: 2585ms; }
+    transition-delay: 2350ms; }
   .Square.has-delay-48, .Square.has-delay-48:after {
-    transition-delay: 2640ms; }
+    transition-delay: 2400ms; }
   .Square.has-delay-49, .Square.has-delay-49:after {
-    transition-delay: 2695ms; }
+    transition-delay: 2450ms; }
   .Square.has-delay-50, .Square.has-delay-50:after {
-    transition-delay: 2750ms; }
+    transition-delay: 2500ms; }
   .Square.has-delay-51, .Square.has-delay-51:after {
-    transition-delay: 2805ms; }
+    transition-delay: 2550ms; }
   .Square.has-delay-52, .Square.has-delay-52:after {
-    transition-delay: 2860ms; }
+    transition-delay: 2600ms; }
   .Square.has-delay-53, .Square.has-delay-53:after {
-    transition-delay: 2915ms; }
+    transition-delay: 2650ms; }
   .Square.has-delay-54, .Square.has-delay-54:after {
-    transition-delay: 2970ms; }
+    transition-delay: 2700ms; }
   .Square.has-delay-55, .Square.has-delay-55:after {
-    transition-delay: 3025ms; }
+    transition-delay: 2750ms; }
   .Square.has-delay-56, .Square.has-delay-56:after {
-    transition-delay: 3080ms; }
+    transition-delay: 2800ms; }
   .Square.has-delay-57, .Square.has-delay-57:after {
-    transition-delay: 3135ms; }
+    transition-delay: 2850ms; }
   .Square.has-delay-58, .Square.has-delay-58:after {
-    transition-delay: 3190ms; }
+    transition-delay: 2900ms; }
   .Square.has-delay-59, .Square.has-delay-59:after {
-    transition-delay: 3245ms; }
+    transition-delay: 2950ms; }
   .Square.has-delay-60, .Square.has-delay-60:after {
-    transition-delay: 3300ms; }
+    transition-delay: 3000ms; }
   .Square:after {
     content: '';
     position: absolute;

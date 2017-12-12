@@ -19,7 +19,7 @@
   &.not-swept:active {
     @include drop-section;
   }
-  $delay: 55ms;
+  $delay: 50ms;
   @for $i from 1 through 60 { // can cover 60 squares
     &.has-delay-#{$i}, &.has-delay-#{$i}:after{
       transition-delay: $delay * $i;
