@@ -36,6 +36,7 @@ class Board extends Component {
     if (!(this.props.game && this.props.game.board)) return
     let renderedBoard = []
     const { board, settings: { xMax, yMax } } = this.props.game
+    // we have to lay it out in y, x order:
     for (let y = 0; y <= yMax; y++) {
       let row = []
       for (let x = 0; x <= xMax; x++) {

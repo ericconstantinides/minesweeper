@@ -12,7 +12,7 @@ import defaultSettings from '../config'
 /**
  * Creates a new game
  *
- * @export
+ * @export {function}
  * @param {number} width - the width of the board to create
  * @param {number} height - the height of the board to create
  * @param {number} numMines - the number of mines to lay
@@ -67,7 +67,7 @@ export function createGame (width, height, numMines) {
 /**
  * The function that fires when a square is clicked on the board
  *
- * @export
+ * @export {function}
  * @param {object} game - contains the entire game and settings
  * @param {object} coords - the x and y coords of the clicked square
  * @returns {object} GAME_WIN
@@ -116,19 +116,18 @@ export function clickSquare (game, { x, y }) {
 /**
  * Starts the game
  *
- * @export
+ * @export {function}
  * @returns {object} - GAME_START
  */
 export function startGame () {
   return {
-    type: GAME_START,
-    action: null
+    type: GAME_START
   }
 }
 /**
  * Toggles the flag on a square and increments or decremetns the flagsRaised
  *
- * @export
+ * @export {function}
  * @param {object} game - contains board and flagsRaised
  * @param {object} coords - the x y coords of the square to update
  * @returns {object} - GAME_UPDATE_FLAGS

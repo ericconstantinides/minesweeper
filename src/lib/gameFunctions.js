@@ -1,7 +1,7 @@
 /**
  * Creates a randomized array of objects in {x,y} coords
  *
- * @export
+ * @export {function}
  * @param {number} xMax - the maximum x value (based off of zero)
  * @param {number} yMax - the maximum y value (based off of zero)
  * @param {number} numMines - the number of mines to generate
@@ -24,7 +24,7 @@ export function generateMines (xMax, yMax, numMines) {
  * Creates a "board" with nested rows and column arrays with an object at each
  * square.
  *
- * @export
+ * @export {function}
  * @param {number} xMax - the maximum x value (based off of zero)
  * @param {number} yMax - the maximum y value (based off of zero)
  * @param {array} random coordinates of mines
@@ -51,7 +51,7 @@ export function layMines (xMax, yMax, mines) {
 /**
  * Adds "minesNearby" value to each square on the board
  *
- * @export
+ * @export {function}
  * @param {number} xMax - the x size of the board
  * @param {number} yMax - the y size of the board
  * @param {array} the board
@@ -70,7 +70,7 @@ export function addBoardHelpers (xMax, yMax, board) {
 /**
  * Checks all the 8 nearby squares, adding up the number of mines
  *
- * @export
+ * @export {function}
  * @param {array} board
  * @param {object} coords - x and y coords of the square to check
  * @returns {number} -1 if it's a mine; 0-8 for the number of mines nearby
@@ -93,21 +93,18 @@ export function findNearbyMines (board, { x, y }) {
 /**
  * Determines whether a square is a mine
  *
- * @export
+ * @export {function}
  * @param {array} mines - the array of mine coords
  * @param {object} coords - x and y coords of the square to check
  * @returns {boolean} - a mine, true, or not a mine, false
  */
 export function isMine (mines, { x, y }) {
-  if (mines.find(square => square.x === x && square.y === y)) {
-    return true
-  }
-  return false
+  return mines.find(square => square.x === x && square.y === y)
 }
 /**
  * Recursively check the surrounding squares for mines
  *
- * @export
+ * @export {function}
  * @param {array} board
  * @param {object} settings - contains the size of the board
  * @param {object} coords - x and y coords of the square to check
@@ -156,7 +153,7 @@ function getSweepDelay (thisSquare, clickedSquare) {
 /**
  * Counts the number squares that have "isSwept"
  *
- * @export
+ * @export {function}
  * @param {array} board
  * @param {object} coords - xMax and yMax coords of the size of the board
  * @returns {number}
@@ -175,7 +172,7 @@ export function countSwept (board, { xMax, yMax }) {
 /**
  * Update mines as either flags or swept upon winning
  *
- * @export
+ * @export {function}
  * @param {array} board
  * @param {array} mines
  * @param {string} status
