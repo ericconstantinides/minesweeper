@@ -6,7 +6,7 @@ import Square from './Square'
 class Board extends Component {
   handleSquareClick = coords => event => {
     event.preventDefault()
-    const { status, board } = this.props.game
+    const { status, board, squaresSwept } = this.props.game
     // ignore click if square is swept, flagged, or (Not Playing and Not Ready)
     if (
       board[coords.x][coords.y].isSwept ||
@@ -15,7 +15,7 @@ class Board extends Component {
     ) {
       return
     }
-    if (this.props.game.squaresSwept === 0) {
+    if (squaresSwept === 0) {
       // start the timer
       this.props.startGame()
     }
@@ -67,7 +67,7 @@ class Board extends Component {
       return (
         <div className='Board'>
           <div className='Board__inner'>
-            GENERATING GAME
+            Laying Mines...
           </div>
         </div>
       )

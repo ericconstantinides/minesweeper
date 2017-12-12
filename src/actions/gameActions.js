@@ -95,7 +95,6 @@ export function clickSquare (game, { x, y }) {
   // if the squaresSwept + number of mines = all the squares:
   if (squaresSwept + settings.numMines === settings.width * settings.height) {
     // now let's cover all the mines with flags
-
     return {
       type: GAME_WIN,
       payload: {
@@ -120,9 +119,7 @@ export function clickSquare (game, { x, y }) {
  * @returns {object} - GAME_START
  */
 export function startGame () {
-  return {
-    type: GAME_START
-  }
+  return { type: GAME_START }
 }
 /**
  * Toggles the flag on a square and increments or decremetns the flagsRaised
